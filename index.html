@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Samuel & Abena — #SSertified2026</title>
+  <meta name="description" content="Wedding celebration of Samuel Simon & Abena Serwah — Information, gifts, and reception menu.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    /* ===== PALETTE — sampled from invitation ===== */
+    :root {
+      /* Golds — the metallic accent on the monogram, florals, headings */
+      --gold:        #C5A55A;
+      --gold-light:  #D6C68C;
+      --gold-shimmer:#E0D4A8;
+      --gold-dark:   #A08030;
+      /* Beige / taupe — the card background */
+      --taupe:       #C4B7A4;
+      --taupe-light: #D1C5B3;
+      --taupe-card:  #CBC0AD;
+      /* Creams — outer marble background */
+      --cream:       #F5F0E8;
+      --cream-warm:  #EDE6DA;
+      /* Browns — body text */
+      --brown-dark:  #3A2F22;
+      --brown-mid:   #584A38;
+      --brown-light: #7E7060;
+      /* Marble vein accent */
+      --marble-vein: rgba(200, 185, 165, 0.25);
+    }
+
+    body {
+      font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+      background-color: var(--cream);
+      color: var(--brown-dark);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ===== MARBLE BACKGROUND ===== */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        /* thin vein-like strokes */
+        linear-gradient(135deg, transparent 42%, var(--marble-vein) 43%, transparent 44%),
+        linear-gradient(225deg, transparent 48%, rgba(200,185,165,0.12) 49%, transparent 50%),
+        /* soft warm washes */
+        radial-gradient(ellipse at 15% 25%, rgba(197,165,90,0.06) 0%, transparent 55%),
+        radial-gradient(ellipse at 75% 65%, rgba(200,185,165,0.10) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 90%, rgba(197,165,90,0.04) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ===== LAYOUT ===== */
+    .page-wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 460px;
+      margin: 0 auto;
+      padding: 0 18px;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      text-align: center;
+      padding: 52px 16px 20px;
+    }
+
+    /* Monogram — intertwined script SA */
+    .monogram {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 20px;
+    }
+
+    .monogram svg { width: 100%; height: 100%; }
+
+    .couple-names {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.75rem;
+      font-weight: 300;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--brown-dark);
+    }
+
+    .couple-names .ampersand {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--gold);
+      font-size: 2rem;
+      padding: 0 2px;
+    }
+
+    .hashtag-header {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      margin-top: 8px;
+      text-transform: uppercase;
+    }
+
+    /* ===== FLORAL SVG DIVIDER ===== */
+    .floral-divider {
+      text-align: center;
+      margin: 20px auto 16px;
+      width: 220px;
+      opacity: 0.5;
+    }
+
+    .floral-divider svg {
+      width: 100%;
+      height: auto;
+    }
+
+    /* ===== QR NOTE ===== */
+    .qr-note {
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 400;
+      color: var(--brown-light);
+      letter-spacing: 0.06em;
+      margin-bottom: 20px;
+      padding: 0 24px;
+      line-height: 1.6;
+    }
+
+    /* ===== WELCOME ===== */
+    .welcome {
+      text-align: center;
+      padding: 16px 16px 28px;
+    }
+
+    .welcome-text {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--brown-mid);
+      letter-spacing: 0.04em;
+      line-height: 1.9;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    /* ===== SECTION SHARED ===== */
+    .section {
+      padding: 40px 0 28px;
+    }
+
+    .section-card {
+      background: var(--taupe-card);
+      border-radius: 10px;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(58,47,34,0.07);
+    }
+
+    /* Gold accent rule at top */
+    .section-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 15%; right: 15%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .section-inner {
+      padding: 36px 24px 28px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 6px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--brown-light);
+      font-weight: 400;
+    }
+
+    .section-rule {
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      border: none;
+      margin: 16px auto 28px;
+    }
+
+    /* ===== FLORAL CARD CORNERS ===== */
+    .card-floral {
+      position: absolute;
+      color: var(--gold);
+      opacity: 0.18;
+      pointer-events: none;
+    }
+
+    .card-floral svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .card-floral-tl { top: 8px; left: 8px; width: 80px; height: 120px; }
+    .card-floral-br { bottom: 8px; right: 8px; width: 80px; height: 120px; transform: rotate(180deg); }
+
+    /* ===== INFO BLOCKS ===== */
+    .info-block {
+      text-align: center;
+      margin-bottom: 24px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid rgba(197,165,90,0.18);
+    }
+
+    .info-block:last-of-type {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .info-heading {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .info-text {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--brown-dark);
+      letter-spacing: 0.03em;
+      line-height: 1.85;
+    }
+
+    .info-text strong {
+      font-weight: 500;
+    }
+
+    /* MoMo block */
+    .momo-number {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--gold-dark);
+      letter-spacing: 0.12em;
+      margin: 10px 0 6px;
+      padding: 8px 20px;
+      border: 1px solid var(--gold-light);
+      border-radius: 4px;
+      background: rgba(255,255,255,0.25);
+    }
+
+    .momo-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 400;
+      color: var(--brown-mid);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* Highlight callout */
+    .highlight-box {
+      background: rgba(197,165,90,0.10);
+      border-left: 2.5px solid var(--gold);
+      padding: 14px 18px;
+      border-radius: 0 5px 5px 0;
+      margin: 10px 0;
+      text-align: left;
+    }
+
+    .highlight-box p {
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: var(--brown-dark);
+      letter-spacing: 0.03em;
+      line-height: 1.7;
+    }
+
+    .highlight-box p strong { font-weight: 500; }
+
+    /* Style guide image */
+    .style-guide-image {
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    .style-guide-image img {
+      width: 100%;
+      max-width: 340px;
+      height: auto;
+      border-radius: 6px;
+      border: 1px solid var(--gold-light);
+      box-shadow: 0 2px 12px rgba(58,47,34,0.08);
+    }
+
+    /* RSVP */
+    .rsvp-contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .rsvp-person {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .rsvp-person .name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brown-mid);
+      min-width: 60px;
+      text-align: right;
+    }
+
+    .rsvp-person a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--gold-dark);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+    }
+
+    .rsvp-person a:hover { text-decoration: underline; }
+
+    /* Tags / badges */
+    .tag {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      color: var(--gold-dark);
+      padding: 5px 16px;
+      border: 1px solid var(--gold-light);
+      border-radius: 20px;
+    }
+
+    .badge {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      background: rgba(197,165,90,0.12);
+      color: var(--brown-dark);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      border-radius: 3px;
+    }
+
+    /* ===== PDF EMBED ===== */
+    .pdf-viewer-wrapper {
+      margin-top: 24px;
+      text-align: center;
+    }
+
+    .pdf-viewer-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--brown-light);
+      margin-bottom: 12px;
+    }
+
+    .pdf-frame {
+      width: 100%;
+      height: 520px;
+      border: 1px solid var(--gold-light);
+      border-radius: 6px;
+      background: var(--cream);
+    }
+
+    .pdf-fallback {
+      display: block;
+      margin-top: 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--gold-dark);
+      text-decoration: none;
+      padding: 10px 20px;
+      border: 1px solid var(--gold-light);
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+
+    .pdf-fallback:hover {
+      background: rgba(197,165,90,0.1);
+      border-color: var(--gold);
+    }
+
+    /* ===== BACK TO TOP ===== */
+    .back-to-top-wrap {
+      text-align: center;
+      padding-top: 16px;
+    }
+
+    .back-to-top {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--brown-light);
+      text-decoration: none;
+      padding: 8px 20px;
+      border: 1px solid rgba(197,165,90,0.3);
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+
+    .back-to-top:hover {
+      color: var(--gold-dark);
+      border-color: var(--gold);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      text-align: center;
+      padding: 36px 16px 56px;
+    }
+
+    .footer-text {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--brown-light);
+      letter-spacing: 0.06em;
+      font-style: italic;
+    }
+
+    .footer-hashtag {
+      font-family: 'Montserrat', sans-serif;
+      margin-top: 14px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+    }
+
+    .footer-ornament {
+      margin-top: 16px;
+      opacity: 0.35;
+    }
+
+    .footer-ornament svg {
+      width: 60px;
+      height: auto;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (min-width: 480px) {
+      .page-wrapper { max-width: 500px; }
+      .couple-names { font-size: 2rem; }
+      .section-inner { padding: 40px 32px 32px; }
+      .pdf-frame { height: 600px; }
+    }
+
+    @media (min-width: 768px) {
+      .page-wrapper { max-width: 580px; }
+      .couple-names { font-size: 2.2rem; }
+      .section-inner { padding: 48px 40px 36px; }
+      .pdf-frame { height: 700px; }
+    }
+
+    /* ===== ENTRANCE ANIMATION ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .header   { animation: fadeUp 0.7s ease-out both; }
+    .welcome  { animation: fadeUp 0.7s 0.1s ease-out both; }
+    .section  { animation: fadeUp 0.7s 0.15s ease-out both; }
+    .footer   { animation: fadeUp 0.7s 0.2s ease-out both; }
+
+    /* ===== PRINT ===== */
+    @media print {
+      .back-to-top-wrap, .pdf-viewer-wrapper { display: none; }
+      body { background: #fff; }
+      .section-card { box-shadow: none; border: 1px solid #ccc; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper" id="top">
+
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+      <!-- Monogram — elegant intertwined S & A with gold gradient -->
+      <div class="monogram">
+        <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%"   stop-color="#E0D4A8"/>
+              <stop offset="40%"  stop-color="#C5A55A"/>
+              <stop offset="100%" stop-color="#A08030"/>
+            </linearGradient>
+          </defs>
+          <!-- Decorative ring -->
+          <ellipse cx="70" cy="70" rx="64" ry="64" fill="none" stroke="url(#g1)" stroke-width="0.7" opacity="0.35"/>
+          <!-- Inner decorative ring -->
+          <ellipse cx="70" cy="70" rx="56" ry="56" fill="none" stroke="url(#g1)" stroke-width="0.4" opacity="0.15"/>
+          <!-- S character — script italic -->
+          <text x="56" y="86" font-family="'Cormorant Garamond', Georgia, serif"
+                font-size="68" font-weight="300" font-style="italic"
+                fill="url(#g1)" opacity="0.9">S</text>
+          <!-- A character — overlapping -->
+          <text x="68" y="90" font-family="'Cormorant Garamond', Georgia, serif"
+                font-size="52" font-weight="400" font-style="italic"
+                fill="url(#g1)" opacity="0.85">A</text>
+        </svg>
+      </div>
+
+      <h1 class="couple-names">
+        Samuel <span class="ampersand">&amp;</span> Abena
+      </h1>
+      <p class="hashtag-header">#SSertified2026</p>
+    </header>
+
+    <!-- ===== FLORAL DIVIDER — vine with blossoms ===== -->
+    <div class="floral-divider" aria-hidden="true">
+      <svg viewBox="0 0 240 30" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#C5A55A" stroke-width="0.8">
+        <!-- Left vine -->
+        <path d="M10 15 Q30 8 50 15 Q70 22 90 15"/>
+        <!-- Center blossom -->
+        <circle cx="120" cy="15" r="4" fill="#C5A55A" fill-opacity="0.25" stroke-width="0.6"/>
+        <circle cx="120" cy="15" r="7" stroke-opacity="0.35"/>
+        <!-- Petals -->
+        <ellipse cx="120" cy="8" rx="2.5" ry="4" fill="#C5A55A" fill-opacity="0.12"/>
+        <ellipse cx="127" cy="13" rx="2.5" ry="4" fill="#C5A55A" fill-opacity="0.12" transform="rotate(72 120 15)"/>
+        <ellipse cx="124" cy="22" rx="2.5" ry="4" fill="#C5A55A" fill-opacity="0.12" transform="rotate(144 120 15)"/>
+        <ellipse cx="116" cy="22" rx="2.5" ry="4" fill="#C5A55A" fill-opacity="0.12" transform="rotate(216 120 15)"/>
+        <ellipse cx="113" cy="13" rx="2.5" ry="4" fill="#C5A55A" fill-opacity="0.12" transform="rotate(288 120 15)"/>
+        <!-- Right vine -->
+        <path d="M150 15 Q170 8 190 15 Q210 22 230 15"/>
+        <!-- Small buds -->
+        <circle cx="50" cy="15" r="2" fill="#C5A55A" fill-opacity="0.18"/>
+        <circle cx="90" cy="15" r="1.5" fill="#C5A55A" fill-opacity="0.15"/>
+        <circle cx="150" cy="15" r="1.5" fill="#C5A55A" fill-opacity="0.15"/>
+        <circle cx="190" cy="15" r="2" fill="#C5A55A" fill-opacity="0.18"/>
+      </svg>
+    </div>
+
+    <!-- QR NOTE -->
+    <p class="qr-note">
+      Guests may access this page anytime by scanning the QR code on their invitation.
+    </p>
+
+    <!-- ===== WELCOME ===== -->
+    <section class="welcome">
+      <p class="welcome-text">
+        Welcome to our wedding celebration.
+      </p>
+    </section>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTION 1 — WEDDING INFORMATION & GIFTS    -->
+    <!-- ═══════════════════════════════════════════ -->
+    <section class="section" id="wedding-info">
+      <div class="section-card">
+
+        <!-- Floral corner decorations — left vine -->
+        <div class="card-floral card-floral-tl" aria-hidden="true">
+          <svg viewBox="0 0 80 130" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <!-- Vine stem -->
+            <path d="M40 125 C38 100 20 90 18 70 C16 50 30 45 28 30 C26 18 35 10 40 5"
+                  stroke="currentColor" stroke-width="0.9"/>
+            <!-- Leaves -->
+            <path d="M18 70 C10 65 8 55 16 52 C20 58 18 68 18 70Z" fill="currentColor" opacity="0.3"/>
+            <path d="M28 30 C36 26 38 18 32 16 C28 22 28 28 28 30Z" fill="currentColor" opacity="0.25"/>
+            <!-- Blossoms -->
+            <circle cx="18" cy="70" r="5" fill="currentColor" opacity="0.12"/>
+            <circle cx="18" cy="70" r="8" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+            <circle cx="40" cy="5" r="4" fill="currentColor" opacity="0.15"/>
+            <circle cx="40" cy="5" r="6.5" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+            <circle cx="28" cy="30" r="3.5" fill="currentColor" opacity="0.1"/>
+            <!-- Petal details on top blossom -->
+            <ellipse cx="40" cy="0" rx="2" ry="3.5" fill="currentColor" opacity="0.1"/>
+            <ellipse cx="45" cy="4" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(72 40 5)"/>
+            <ellipse cx="43" cy="10" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(144 40 5)"/>
+            <ellipse cx="37" cy="10" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(216 40 5)"/>
+            <ellipse cx="35" cy="4" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(288 40 5)"/>
+          </svg>
+        </div>
+
+        <!-- Right vine (mirrored) -->
+        <div class="card-floral card-floral-br" aria-hidden="true">
+          <svg viewBox="0 0 80 130" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <path d="M40 125 C38 100 20 90 18 70 C16 50 30 45 28 30 C26 18 35 10 40 5"
+                  stroke="currentColor" stroke-width="0.9"/>
+            <path d="M18 70 C10 65 8 55 16 52 C20 58 18 68 18 70Z" fill="currentColor" opacity="0.3"/>
+            <path d="M28 30 C36 26 38 18 32 16 C28 22 28 28 28 30Z" fill="currentColor" opacity="0.25"/>
+            <circle cx="18" cy="70" r="5" fill="currentColor" opacity="0.12"/>
+            <circle cx="18" cy="70" r="8" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+            <circle cx="40" cy="5" r="4" fill="currentColor" opacity="0.15"/>
+            <circle cx="40" cy="5" r="6.5" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+            <circle cx="28" cy="30" r="3.5" fill="currentColor" opacity="0.1"/>
+            <ellipse cx="40" cy="0" rx="2" ry="3.5" fill="currentColor" opacity="0.1"/>
+            <ellipse cx="45" cy="4" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(72 40 5)"/>
+            <ellipse cx="43" cy="10" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(144 40 5)"/>
+            <ellipse cx="37" cy="10" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(216 40 5)"/>
+            <ellipse cx="35" cy="4" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(288 40 5)"/>
+          </svg>
+        </div>
+
+        <div class="section-inner">
+          <h2 class="section-title">Wedding Information</h2>
+          <p class="section-subtitle">Details &amp; Gifts</p>
+          <hr class="section-rule">
+
+          <!-- Note on Gifts -->
+          <div class="info-block">
+            <h3 class="info-heading">Note on Gifts</h3>
+            <p class="info-text">
+              We will be truly blessed by your<br>
+              presence &amp; your prayers.<br>
+              If you wish to give us a gift,<br>
+              monetary gifts is what we suggest.
+            </p>
+          </div>
+
+          <!-- MoMo -->
+          <div class="info-block">
+            <h3 class="info-heading">Mobile Money (MoMo)</h3>
+            <div class="momo-number">0552565248</div>
+            <p class="momo-name">Abena Serwah Addai-Kyenkyehene</p>
+          </div>
+
+          <!-- Access Card -->
+          <div class="info-block">
+            <h3 class="info-heading">Important Reminder</h3>
+            <div class="highlight-box">
+              <p>Please remember to pick your <strong>physical access card</strong> for entry to the reception.</p>
+            </div>
+          </div>
+
+          <!-- Style Guide -->
+          <div class="info-block">
+            <h3 class="info-heading">Style Guide</h3>
+            <div class="style-guide-image">
+              <img src="pages.jpg" alt="Style guide — Ladies: All things bright & beautiful, gowns with fascinators. Gentlemen: Black tie, clean fits & sharp vibes only." loading="lazy">
+            </div>
+          </div>
+
+          <!-- RSVP -->
+          <div class="info-block">
+            <h3 class="info-heading">RSVP</h3>
+            <div class="rsvp-contacts">
+              <div class="rsvp-person">
+                <span class="name">Junior:</span>
+                <a href="tel:0553189883">0553 189 883</a>
+              </div>
+              <div class="rsvp-person">
+                <span class="name">Eunice:</span>
+                <a href="tel:0242545817">0242 545 817</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Event Notes -->
+          <div class="info-block">
+            <h3 class="info-heading">Please Note</h3>
+            <p class="badge">Strictly By Invitation</p>
+            <p class="info-text" style="margin-top: 12px; font-size: 0.9rem;">
+              Kindly note this is an <strong>adult-only event</strong>.
+            </p>
+          </div>
+
+          <!-- Hashtag -->
+          <div class="info-block">
+            <h3 class="info-heading">Wedding Hashtag</h3>
+            <span class="tag">#SSertified2026</span>
+          </div>
+
+          <!-- ===== EMBEDDED PDF VIEWER ===== -->
+          <div class="pdf-viewer-wrapper">
+            <p class="pdf-viewer-label">View the original invitation</p>
+            <!--
+              ══════════════════════════════════════════════════════
+              HOW TO USE:
+              1. Place your invitation PDF in the same folder as
+                 this HTML file, named "invitation.pdf"
+              2. Or replace the src below with a hosted URL, e.g.:
+                 src="https://yoursite.com/invitation.pdf"
+              ══════════════════════════════════════════════════════
+            -->
+            <iframe
+              class="pdf-frame"
+              src="invitation.pdf"
+              title="Wedding invitation PDF"
+              loading="lazy">
+            </iframe>
+            <a class="pdf-fallback" href="invitation.pdf" target="_blank" rel="noopener">
+              Open Invitation PDF ↗
+            </a>
+          </div>
+
+          <div class="back-to-top-wrap">
+            <a href="#top" class="back-to-top">↑ Back to Top</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reception Menu — will be added as a separate page later -->
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <p class="footer-text">Thank you for celebrating with us.</p>
+      <p class="footer-hashtag">#SSertified2026</p>
+      <div class="footer-ornament" aria-hidden="true">
+        <svg viewBox="0 0 60 20" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#C5A55A" stroke-width="0.6">
+          <path d="M5 10 Q15 4 25 10 Q35 16 45 10 Q50 7 55 10"/>
+          <circle cx="30" cy="10" r="2.5" fill="#C5A55A" fill-opacity="0.2"/>
+        </svg>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>
