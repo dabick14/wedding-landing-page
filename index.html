@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
   <title>Samuel & Abena — #SSertified2026</title>
   <meta name="description" content="Wedding celebration of Samuel Simon & Abena Serwah — Information, gifts, and reception menu.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -365,9 +366,17 @@
       color: var(--gold-dark);
       text-decoration: none;
       letter-spacing: 0.06em;
+      -webkit-text-fill-color: var(--gold-dark);
     }
 
     .rsvp-person a:hover { text-decoration: underline; }
+
+    /* Override iOS auto-link styling on any detected numbers */
+    a[href^="tel"] {
+      color: inherit;
+      text-decoration: none;
+      -webkit-text-fill-color: inherit;
+    }
 
     /* Tags / badges */
     .tag {
