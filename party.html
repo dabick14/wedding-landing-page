@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+  <title>Wedding Party — #SSertified2026</title>
+  <meta name="description" content="Meet the wedding party for Samuel & Abena's wedding celebration.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    :root {
+      --gold:        #C5A55A;
+      --gold-light:  #D6C68C;
+      --gold-shimmer:#E0D4A8;
+      --gold-dark:   #A08030;
+      --taupe:       #C4B7A4;
+      --taupe-light: #D1C5B3;
+      --taupe-card:  #CBC0AD;
+      --cream:       #F5F0E8;
+      --cream-warm:  #EDE6DA;
+      --brown-dark:  #3A2F22;
+      --brown-mid:   #584A38;
+      --brown-light: #7E7060;
+      --marble-vein: rgba(200, 185, 165, 0.25);
+    }
+
+    body {
+      font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+      background-color: var(--cream);
+      color: var(--brown-dark);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(135deg, transparent 42%, var(--marble-vein) 43%, transparent 44%),
+        linear-gradient(225deg, transparent 48%, rgba(200,185,165,0.12) 49%, transparent 50%),
+        radial-gradient(ellipse at 15% 25%, rgba(197,165,90,0.06) 0%, transparent 55%),
+        radial-gradient(ellipse at 75% 65%, rgba(200,185,165,0.10) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 90%, rgba(197,165,90,0.04) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page-wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 460px;
+      margin: 0 auto;
+      padding: 0 18px;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      text-align: center;
+      padding: 44px 16px 12px;
+    }
+
+    .monogram {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 14px;
+    }
+
+    .monogram img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .page-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--brown-dark);
+    }
+
+    .page-subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 6px;
+    }
+
+    /* ===== BACK LINK ===== */
+    .back-link {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--brown-light);
+      text-decoration: none;
+      padding: 10px 0;
+      transition: color 0.3s;
+    }
+
+    .back-link:hover { color: var(--gold-dark); }
+
+    /* ===== DIVIDER ===== */
+    .divider {
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      border: none;
+      margin: 16px auto 28px;
+    }
+
+    /* ===== PARTY GRID ===== */
+    .party-list {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      padding-bottom: 20px;
+    }
+
+    .party-member {
+      text-align: center;
+    }
+
+    .party-photo {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--gold-light);
+      box-shadow: 0 4px 20px rgba(58,47,34,0.10);
+    }
+
+    .party-name {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--brown-dark);
+      letter-spacing: 0.08em;
+      margin-top: 14px;
+    }
+
+    .party-role {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-top: 2px;
+    }
+
+    .party-desc {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 0.95rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--brown-light);
+      margin-top: 4px;
+      letter-spacing: 0.02em;
+    }
+
+    .party-separator {
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold-light);
+      border: none;
+      margin: 0 auto;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      text-align: center;
+      padding: 28px 16px 52px;
+    }
+
+    .footer-hashtag {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .header      { animation: fadeUp 0.7s ease-out both; }
+    .party-list  { animation: fadeUp 0.7s 0.1s ease-out both; }
+    .footer      { animation: fadeUp 0.7s 0.2s ease-out both; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (min-width: 480px) {
+      .page-wrapper { max-width: 500px; }
+      .page-title { font-size: 1.8rem; }
+    }
+
+    @media (min-width: 768px) {
+      .page-wrapper { max-width: 580px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+
+    <header class="header">
+      <a href="index.html" class="back-link">← Back to Main</a>
+
+      <div class="monogram">
+        <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/monogram.png" alt="S & A monogram">
+      </div>
+
+      <h1 class="page-title">Wedding Party</h1>
+      <p class="page-subtitle">#SSertified2026</p>
+      <hr class="divider">
+    </header>
+
+    <div class="party-list">
+
+      <div class="party-member">
+        <img class="party-photo" src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/Afia.jpeg" alt="Afia — Maid of Honour" loading="lazy">
+        <p class="party-name">Afia</p>
+        <p class="party-role">Maid of Honour</p>
+        <p class="party-desc">The bride's sister</p>
+      </div>
+
+      <hr class="party-separator" aria-hidden="true">
+
+      <div class="party-member">
+        <img class="party-photo" src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/Chelsea.jpeg" alt="Chelsea — Bridesmaid" loading="lazy">
+        <p class="party-name">Chelsea</p>
+        <p class="party-role">Bridesmaid</p>
+        <p class="party-desc">The bride's personal lawyer</p>
+      </div>
+
+      <hr class="party-separator" aria-hidden="true">
+
+      <div class="party-member">
+        <img class="party-photo" src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/Lp%20Sharon.jpeg" alt="Lp Sharon — Bridesmaid" loading="lazy">
+        <p class="party-name">Lp Sharon</p>
+        <p class="party-role">Bridesmaid</p>
+        <p class="party-desc">The bride's tight paddy</p>
+      </div>
+
+      <hr class="party-separator" aria-hidden="true">
+
+      <div class="party-member">
+        <img class="party-photo" src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/Barbara.jpeg" alt="Barbara — Bridesmaid" loading="lazy">
+        <p class="party-name">Barbara</p>
+        <p class="party-role">Bridesmaid</p>
+        <p class="party-desc">The bride's cousin</p>
+      </div>
+
+      <hr class="party-separator" aria-hidden="true">
+
+      <div class="party-member">
+        <img class="party-photo" src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/Mrs%20Osei-Bobie.jpeg" alt="Mrs Osei-Bobie — Bridesmaid" loading="lazy">
+        <p class="party-name">Mrs Osei-Bobie</p>
+        <p class="party-role">Bridesmaid</p>
+        <p class="party-desc">The bride's partner in crime 😂</p>
+      </div>
+
+      <hr class="party-separator" aria-hidden="true">
+
+      <div class="party-member">
+        <img class="party-photo" src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/Mrs%20Owusu%20Agyeman.jpeg" alt="Mrs Owusu Agyeman — Bridesmaid" loading="lazy">
+        <p class="party-name">Mrs Owusu Agyeman</p>
+        <p class="party-role">Bridesmaid</p>
+        <p class="party-desc">The bride's mpaninsem partner</p>
+      </div>
+
+    </div>
+
+    <footer class="footer">
+      <p class="footer-hashtag">#SSertified2026</p>
+    </footer>
+
+  </div>
+</body>
+</html>
