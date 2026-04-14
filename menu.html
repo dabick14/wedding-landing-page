@@ -4,14 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="format-detection" content="telephone=no">
-  <title>Wedding Party — #SSertified2026</title>
-  <meta name="description" content="Meet the wedding party for Samuel & Abena's wedding celebration.">
+  <title>Reception Menu — #SSertified2026</title>
+  <meta name="description" content="Reception menu for Samuel & Abena's wedding celebration.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; font-size: 16px; }
 
     :root {
@@ -52,14 +51,6 @@
         radial-gradient(ellipse at 50% 90%, rgba(197,165,90,0.04) 0%, transparent 60%);
       pointer-events: none;
       z-index: 0;
-    }
-
-    .page-wrapper {
-      position: relative;
-      z-index: 1;
-      max-width: 460px;
-      margin: 0 auto;
-      padding: 0 18px;
     }
 
     /* ===== NAV ===== */
@@ -160,6 +151,14 @@
       .nav-links a { padding: 8px 12px; width: auto; }
     }
 
+    .page-wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 460px;
+      margin: 0 auto;
+      padding: 0 18px;
+    }
+
     /* ===== HEADER ===== */
     .header {
       text-align: center;
@@ -185,7 +184,6 @@
       margin-top: 6px;
     }
 
-    /* ===== DIVIDER ===== */
     .divider {
       display: block;
       width: 40px;
@@ -195,63 +193,64 @@
       margin: 16px auto 28px;
     }
 
-    /* ===== PARTY GRID ===== */
-    .party-list {
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-      padding-bottom: 20px;
+    /* ===== MENU CONTENT ===== */
+    .menu-placeholder {
+      text-align: center;
+      padding: 48px 16px 60px;
     }
 
-    .party-member {
+    .menu-placeholder p {
+      color: var(--brown-light);
+      font-style: italic;
+      font-size: 1.05rem;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      line-height: 1.8;
+    }
+
+    .menu-placeholder p + p {
+      margin-top: 8px;
+      font-size: 0.9rem;
+    }
+
+    .menu-category {
+      margin-bottom: 28px;
       text-align: center;
     }
 
-    .party-photo {
-      width: 100%;
-      aspect-ratio: 3 / 4;
-      object-fit: cover;
-      border-radius: 8px;
-      border: 1px solid var(--gold-light);
-      box-shadow: 0 4px 20px rgba(58,47,34,0.10);
-    }
+    .menu-category:last-child { margin-bottom: 0; }
 
-    .party-name {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.25rem;
-      font-weight: 500;
-      color: var(--brown-dark);
-      letter-spacing: 0.08em;
-      margin-top: 14px;
-    }
-
-    .party-role {
+    .menu-category-title {
       font-family: 'Montserrat', sans-serif;
       font-size: 0.62rem;
       font-weight: 600;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
       color: var(--gold-dark);
-      margin-top: 2px;
+      margin-bottom: 10px;
     }
 
-    .party-desc {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 0.95rem;
-      font-weight: 300;
-      font-style: italic;
-      color: var(--brown-light);
-      margin-top: 4px;
-      letter-spacing: 0.02em;
-    }
-
-    .party-separator {
+    .menu-category-title::after {
+      content: '';
       display: block;
       width: 24px;
       height: 1px;
       background: var(--gold-light);
-      border: none;
-      margin: 0 auto;
+      margin: 8px auto 0;
+    }
+
+    .menu-items {
+      list-style: none;
+      padding: 0;
+    }
+
+    .menu-items li {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--brown-dark);
+      letter-spacing: 0.03em;
+      padding: 4px 0;
+      line-height: 1.65;
     }
 
     /* ===== FOOTER ===== */
@@ -274,11 +273,9 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    .header      { animation: fadeUp 0.7s ease-out both; }
-    .party-list  { animation: fadeUp 0.7s 0.1s ease-out both; }
-    .footer      { animation: fadeUp 0.7s 0.2s ease-out both; }
+    .header { animation: fadeUp 0.7s ease-out both; }
+    .footer { animation: fadeUp 0.7s 0.2s ease-out both; }
 
-    /* ===== RESPONSIVE ===== */
     @media (min-width: 480px) {
       .page-wrapper { max-width: 500px; }
       .page-title { font-size: 1.8rem; }
@@ -303,74 +300,36 @@
     </div>
     <div class="nav-links">
       <a href="index.html">Home</a>
-      <a href="party.html" class="active">Wedding Party</a>
-      <a href="menu.html">Menu</a>
+      <a href="party.html">Wedding Party</a>
+      <a href="menu.html" class="active">Menu</a>
     </div>
   </nav>
 
   <div class="page-wrapper">
 
     <header class="header">
-      <h1 class="page-title">Wedding Party</h1>
-      <p class="page-subtitle">#SSertified2026</p>
+      <h1 class="page-title">Reception Menu</h1>
+      <p class="page-subtitle">Dinner &amp; Refreshments</p>
       <hr class="divider">
     </header>
 
-    <div class="party-list">
-
-      <div class="party-member">
-        <img class="party-photo" src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/Afia.jpeg" alt="Afia — Maid of Honour" loading="lazy">
-        <p class="party-name">Afia</p>
-        <p class="party-role">Maid of Honour</p>
-        <p class="party-desc">The bride's sister</p>
-      </div>
-
-      <hr class="party-separator" aria-hidden="true">
-
-      <div class="party-member">
-        <img class="party-photo" src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/Chelsea.jpeg" alt="Chelsea — Bridesmaid" loading="lazy">
-        <p class="party-name">Chelsea</p>
-        <p class="party-role">Bridesmaid</p>
-        <p class="party-desc">The bride's personal lawyer</p>
-      </div>
-
-      <hr class="party-separator" aria-hidden="true">
-
-      <div class="party-member">
-        <img class="party-photo" src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/Lp%20Sharon.jpeg" alt="Lp Sharon — Bridesmaid" loading="lazy">
-        <p class="party-name">Lp Sharon</p>
-        <p class="party-role">Bridesmaid</p>
-        <p class="party-desc">The bride's tight paddy</p>
-      </div>
-
-      <hr class="party-separator" aria-hidden="true">
-
-      <div class="party-member">
-        <img class="party-photo" src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/Barbara.jpeg" alt="Barbara — Bridesmaid" loading="lazy">
-        <p class="party-name">Barbara</p>
-        <p class="party-role">Bridesmaid</p>
-        <p class="party-desc">The bride's cousin</p>
-      </div>
-
-      <hr class="party-separator" aria-hidden="true">
-
-      <div class="party-member">
-        <img class="party-photo" src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/Mrs%20Osei-Bobie.jpeg" alt="Mrs Osei-Bobie — Bridesmaid" loading="lazy">
-        <p class="party-name">Mrs Osei-Bobie</p>
-        <p class="party-role">Bridesmaid</p>
-        <p class="party-desc">The bride's partner in crime 😂</p>
-      </div>
-
-      <hr class="party-separator" aria-hidden="true">
-
-      <div class="party-member">
-        <img class="party-photo" src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/Mrs%20Owusu%20Agyeman.jpeg" alt="Mrs Owusu Agyeman — Bridesmaid" loading="lazy">
-        <p class="party-name">Mrs Owusu Agyeman</p>
-        <p class="party-role">Bridesmaid</p>
-        <p class="party-desc">The bride's mpaninsem partner</p>
-      </div>
-
+    <!-- PLACEHOLDER — replace with actual menu items -->
+    <div class="menu-placeholder">
+      <p>The reception menu will be updated soon.</p>
+      <p>Please check back closer to the wedding day.</p>
     </div>
+
+    <!--
+      TO ADD MENU ITEMS: Replace .menu-placeholder with blocks like:
+
+      <div class="menu-category">
+        <h3 class="menu-category-title">Starters</h3>
+        <ul class="menu-items">
+          <li>Garden salad with vinaigrette</li>
+          <li>Spring rolls with dipping sauce</li>
+        </ul>
+      </div>
+    -->
 
     <footer class="footer">
       <p class="footer-hashtag">#SSertified2026</p>
