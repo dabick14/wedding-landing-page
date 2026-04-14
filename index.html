@@ -391,46 +391,27 @@
       border-radius: 3px;
     }
 
-    /* ===== PDF EMBED ===== */
-    .pdf-viewer-wrapper {
+    /* ===== PDF LINK ===== */
+    .pdf-link-wrapper {
       margin-top: 24px;
       text-align: center;
     }
 
-    .pdf-viewer-label {
+    .pdf-link {
+      display: inline-block;
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.6rem;
-      font-weight: 400;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--brown-light);
-      margin-bottom: 12px;
-    }
-
-    .pdf-frame {
-      width: 100%;
-      height: 520px;
-      border: 1px solid var(--gold-light);
-      border-radius: 6px;
-      background: var(--cream);
-    }
-
-    .pdf-fallback {
-      display: block;
-      margin-top: 10px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.68rem;
+      font-size: 0.72rem;
       font-weight: 500;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.14em;
       color: var(--gold-dark);
       text-decoration: none;
-      padding: 10px 20px;
+      padding: 12px 24px;
       border: 1px solid var(--gold-light);
       border-radius: 4px;
       transition: all 0.3s;
     }
 
-    .pdf-fallback:hover {
+    .pdf-link:hover {
       background: rgba(197,165,90,0.1);
       border-color: var(--gold);
     }
@@ -499,14 +480,13 @@
       .page-wrapper { max-width: 500px; }
       .couple-names { font-size: 2rem; }
       .section-inner { padding: 40px 32px 32px; }
-      .pdf-frame { height: 600px; }
+
     }
 
     @media (min-width: 768px) {
       .page-wrapper { max-width: 580px; }
       .couple-names { font-size: 2.2rem; }
       .section-inner { padding: 48px 40px 36px; }
-      .pdf-frame { height: 700px; }
     }
 
     /* ===== ENTRANCE ANIMATION ===== */
@@ -522,7 +502,7 @@
 
     /* ===== PRINT ===== */
     @media print {
-      .back-to-top-wrap, .pdf-viewer-wrapper { display: none; }
+      .back-to-top-wrap, .pdf-link-wrapper { display: none; }
       body { background: #fff; }
       .section-card { box-shadow: none; border: 1px solid #ccc; }
     }
@@ -719,26 +699,10 @@
             <span class="tag">#SSertified2026</span>
           </div>
 
-          <!-- ===== EMBEDDED PDF VIEWER ===== -->
-          <div class="pdf-viewer-wrapper">
-            <p class="pdf-viewer-label">View the original invitation</p>
-            <!--
-              ══════════════════════════════════════════════════════
-              HOW TO USE:
-              1. Place your invitation PDF in the same folder as
-                 this HTML file, named "invitation.pdf"
-              2. Or replace the src below with a hosted URL, e.g.:
-                 src="https://yoursite.com/invitation.pdf"
-              ══════════════════════════════════════════════════════
-            -->
-            <iframe
-              class="pdf-frame"
-              src="invitation.pdf"
-              title="Wedding invitation PDF"
-              loading="lazy">
-            </iframe>
-            <a class="pdf-fallback" href="invitation.pdf" target="_blank" rel="noopener">
-              Open Invitation PDF ↗
+          <!-- ===== INVITATION PDF LINK ===== -->
+          <div class="pdf-link-wrapper">
+            <a class="pdf-link" href="invitation.pdf" target="_blank" rel="noopener">
+              View Invitation ↗
             </a>
           </div>
 
