@@ -81,14 +81,18 @@
       padding: 52px 16px 20px;
     }
 
-    /* Monogram — intertwined script SA */
+    /* Monogram */
     .monogram {
-      width: 110px;
-      height: 110px;
+      width: 120px;
+      height: 120px;
       margin: 0 auto 20px;
     }
 
-    .monogram svg { width: 100%; height: 100%; }
+    .monogram img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
 
     .couple-names {
       font-family: 'Cormorant Garamond', Georgia, serif;
@@ -513,29 +517,9 @@
 
     <!-- ===== HEADER ===== -->
     <header class="header">
-      <!-- Monogram — elegant intertwined S & A with gold gradient -->
+      <!-- Monogram -->
       <div class="monogram">
-        <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%"   stop-color="#E0D4A8"/>
-              <stop offset="40%"  stop-color="#C5A55A"/>
-              <stop offset="100%" stop-color="#A08030"/>
-            </linearGradient>
-          </defs>
-          <!-- Decorative ring -->
-          <ellipse cx="70" cy="70" rx="64" ry="64" fill="none" stroke="url(#g1)" stroke-width="0.7" opacity="0.35"/>
-          <!-- Inner decorative ring -->
-          <ellipse cx="70" cy="70" rx="56" ry="56" fill="none" stroke="url(#g1)" stroke-width="0.4" opacity="0.15"/>
-          <!-- S character — script italic -->
-          <text x="56" y="86" font-family="'Cormorant Garamond', Georgia, serif"
-                font-size="68" font-weight="300" font-style="italic"
-                fill="url(#g1)" opacity="0.9">S</text>
-          <!-- A character — overlapping -->
-          <text x="68" y="90" font-family="'Cormorant Garamond', Georgia, serif"
-                font-size="52" font-weight="400" font-style="italic"
-                fill="url(#g1)" opacity="0.85">A</text>
-        </svg>
+        <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/monogram.png" alt="S & A monogram">
       </div>
 
       <h1 class="couple-names">
@@ -665,7 +649,7 @@
           <div class="info-block">
             <h3 class="info-heading">Style Guide</h3>
             <div class="style-guide-image">
-              <img src="pages.jpg" alt="Style guide — Ladies: All things bright & beautiful, gowns with fascinators. Gentlemen: Black tie, clean fits & sharp vibes only." loading="lazy">
+              <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/pages.jpg" alt="Style guide — Ladies: All things bright & beautiful, gowns with fascinators. Gentlemen: Black tie, clean fits & sharp vibes only." loading="lazy">
             </div>
           </div>
 
