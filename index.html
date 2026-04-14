@@ -318,19 +318,45 @@
 
     .highlight-box p strong { font-weight: 500; }
 
-    /* Style guide image */
-    .style-guide-image {
-      text-align: center;
-      margin-top: 8px;
+    /* Style guide cards */
+    .style-guide-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-top: 12px;
     }
 
-    .style-guide-image img {
+    .style-card {
+      text-align: center;
+    }
+
+    .style-card-caption {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--brown-dark);
+      letter-spacing: 0.03em;
+      line-height: 1.5;
+      margin-bottom: 12px;
+      padding: 0 8px;
+    }
+
+    .style-card img {
       width: 100%;
-      max-width: 340px;
       height: auto;
       border-radius: 6px;
       border: 1px solid var(--gold-light);
       box-shadow: 0 2px 12px rgba(58,47,34,0.08);
+    }
+
+    .style-card-divider {
+      display: block;
+      width: 30px;
+      height: 1px;
+      background: var(--gold-light);
+      border: none;
+      margin: 0 auto;
     }
 
     /* RSVP */
@@ -657,8 +683,34 @@
           <!-- Style Guide -->
           <div class="info-block">
             <h3 class="info-heading">Style Guide</h3>
-            <div class="style-guide-image">
-              <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/pages.jpg" alt="Style guide — Ladies: All things bright & beautiful, gowns with fascinators. Gentlemen: Black tie, clean fits & sharp vibes only." loading="lazy">
+            <div class="style-guide-cards">
+
+              <div class="style-card">
+                <p class="style-card-caption">“For Our Beautiful Mama’s &amp; Rich Aunties”</p>
+                <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/aunties.png" alt="Style inspiration for mothers and aunties — elegant gowns with fascinators" loading="lazy">
+              </div>
+
+              <hr class="style-card-divider" aria-hidden="true">
+
+              <div class="style-card">
+                <p class="style-card-caption">Fascinators Style Inspiration &amp; Guide</p>
+                <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/hats.png" alt="Fascinator style inspiration — bold elegant headpieces" loading="lazy">
+              </div>
+
+              <hr class="style-card-divider" aria-hidden="true">
+
+              <div class="style-card">
+                <p class="style-card-caption">“Ladies It’s Giving Wedding Slay!<br>Don’t Disappoint”</p>
+                <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/ladies.png" alt="Ladies style inspiration — stunning colorful gowns" loading="lazy">
+              </div>
+
+              <hr class="style-card-divider" aria-hidden="true">
+
+              <div class="style-card">
+                <p class="style-card-caption">“Gents Clean Fits &amp; Sharp Vibes Only!<br>Come Looking Like Money”</p>
+                <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/men.png" alt="Gentlemen style inspiration — black tie, sharp suits" loading="lazy">
+              </div>
+
             </div>
           </div>
 
