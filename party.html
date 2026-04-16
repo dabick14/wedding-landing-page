@@ -195,12 +195,54 @@
       margin: 16px auto 28px;
     }
 
+    /* ===== FEATURED PAIR ===== */
+    .featured-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .featured-pair .party-member {
+      text-align: center;
+    }
+
+    .featured-pair .party-photo {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1.5px solid var(--gold);
+      box-shadow: 0 4px 20px rgba(58,47,34,0.12);
+    }
+
+    .featured-pair .party-name {
+      font-size: 1.1rem;
+    }
+
     /* ===== PARTY GRID ===== */
-    .party-list {
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
+    .party-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
       padding-bottom: 20px;
+    }
+
+    .party-grid .party-member {
+      text-align: center;
+    }
+
+    /* Section labels */
+    .party-section-label {
+      grid-column: 1 / -1;
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold);
+      padding: 8px 0 4px;
     }
 
     .party-member {
@@ -218,18 +260,18 @@
 
     .party-name {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.25rem;
+      font-size: 1rem;
       font-weight: 500;
       color: var(--brown-dark);
-      letter-spacing: 0.08em;
-      margin-top: 14px;
+      letter-spacing: 0.06em;
+      margin-top: 10px;
     }
 
     .party-role {
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.62rem;
+      font-size: 0.55rem;
       font-weight: 600;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--gold-dark);
       margin-top: 2px;
@@ -237,21 +279,23 @@
 
     .party-desc {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       font-weight: 300;
       font-style: italic;
       color: var(--brown-light);
-      margin-top: 4px;
+      margin-top: 3px;
       letter-spacing: 0.02em;
+      line-height: 1.4;
     }
 
-    .party-separator {
+    .grid-divider {
+      grid-column: 1 / -1;
       display: block;
-      width: 24px;
+      width: 30px;
       height: 1px;
       background: var(--gold-light);
       border: none;
-      margin: 0 auto;
+      margin: 4px auto;
     }
 
     /* ===== FOOTER ===== */
@@ -274,9 +318,10 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    .header      { animation: fadeUp 0.7s ease-out both; }
-    .party-list  { animation: fadeUp 0.7s 0.1s ease-out both; }
-    .footer      { animation: fadeUp 0.7s 0.2s ease-out both; }
+    .header        { animation: fadeUp 0.7s ease-out both; }
+    .featured-pair { animation: fadeUp 0.7s 0.1s ease-out both; }
+    .party-grid    { animation: fadeUp 0.7s 0.15s ease-out both; }
+    .footer        { animation: fadeUp 0.7s 0.2s ease-out both; }
 
     /* ===== RESPONSIVE ===== */
     @media (min-width: 480px) {
@@ -318,56 +363,105 @@
 
     <div class="party-list">
 
-      <div class="party-member">
-        <img class="party-photo" src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/Afia.jpeg" alt="Frimpomah — Maid of Honour" loading="lazy">
-        <p class="party-name">Frimpomah</p>
-        <p class="party-role">Maid of Honour</p>
-        <p class="party-desc">The bride's sister</p>
+      <!-- ===== FEATURED: MOH & BEST MAN ===== -->
+      <div class="featured-pair">
+        <div class="party-member">
+          <img class="party-photo" src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/Afia.jpeg" alt="Frimpomah — Maid of Honour" loading="lazy">
+          <p class="party-name">Frimpomah</p>
+          <p class="party-role">Maid of Honour</p>
+          <p class="party-desc">The bride's sister</p>
+        </div>
+        <div class="party-member">
+          <img class="party-photo" src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/Godbless.jpeg" alt="Godbless — Best Man" loading="lazy">
+          <p class="party-name">Godbless</p>
+          <p class="party-role">Best Man</p>
+          <p class="party-desc">The groom's brother</p>
+        </div>
       </div>
 
-      <hr class="party-separator" aria-hidden="true">
+      <!-- ===== GRID: ALTERNATING PAIRS ===== -->
+      <div class="party-grid">
 
-      <div class="party-member">
-        <img class="party-photo" src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/Chelsea.jpeg" alt="Chelsea — Bridesmaid" loading="lazy">
-        <p class="party-name">Chelsea</p>
-        <p class="party-role">Bridesmaid</p>
-        <p class="party-desc">The bride's personal lawyer</p>
-      </div>
+        <p class="party-section-label">Bridesmaids &amp; Groomsmen</p>
 
-      <hr class="party-separator" aria-hidden="true">
+        <div class="party-member">
+          <img class="party-photo" src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/Chelsea.jpeg" alt="Chelsea — Bridesmaid" loading="lazy">
+          <p class="party-name">Chelsea</p>
+          <p class="party-role">Bridesmaid</p>
+          <p class="party-desc">The bride's personal lawyer</p>
+        </div>
 
-      <div class="party-member">
-        <img class="party-photo" src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/Lp%20Sharon.jpeg" alt="Lp Sharon — Bridesmaid" loading="lazy">
-        <p class="party-name">Lp Sharon</p>
-        <p class="party-role">Bridesmaid</p>
-        <p class="party-desc">The bride's tight paddy</p>
-      </div>
+        <div class="party-member">
+          <img class="party-photo" src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/Cantonna.jpeg" alt="Cantonna — Groomsman" loading="lazy">
+          <p class="party-name">Cantonna</p>
+          <p class="party-role">Groomsman</p>
+          <p class="party-desc">P.A to the groom</p>
+        </div>
 
-      <hr class="party-separator" aria-hidden="true">
+        <hr class="grid-divider" aria-hidden="true">
 
-      <div class="party-member">
-        <img class="party-photo" src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/Barbara.jpeg" alt="Adepa — Bridesmaid" loading="lazy">
-        <p class="party-name">Adepa</p>
-        <p class="party-role">Bridesmaid</p>
-        <p class="party-desc">The bride's cousin</p>
-      </div>
+        <div class="party-member">
+          <img class="party-photo" src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/Lp%20Sharon.jpeg" alt="Lp Sharon — Bridesmaid" loading="lazy">
+          <p class="party-name">Lp Sharon</p>
+          <p class="party-role">Bridesmaid</p>
+          <p class="party-desc">The bride's tight paddy</p>
+        </div>
 
-      <hr class="party-separator" aria-hidden="true">
+        <div class="party-member">
+          <img class="party-photo" src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/Nana%20Bonsu.jpeg" alt="Nana Bonsu — Groomsman" loading="lazy">
+          <p class="party-name">Nana Bonsu</p>
+          <p class="party-role">Groomsman</p>
+          <p class="party-desc">Groom's cashier</p>
+        </div>
 
-      <div class="party-member">
-        <img class="party-photo" src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/Mrs%20Osei-Bobie.jpeg" alt="Mrs Osei-Bobie — Bridesmaid" loading="lazy">
-        <p class="party-name">Mrs Osei-Bobie</p>
-        <p class="party-role">Bridesmaid</p>
-        <p class="party-desc">The bride's partner in crime 😂</p>
-      </div>
+        <hr class="grid-divider" aria-hidden="true">
 
-      <hr class="party-separator" aria-hidden="true">
+        <div class="party-member">
+          <img class="party-photo" src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/Barbara.jpeg" alt="Adepa — Bridesmaid" loading="lazy">
+          <p class="party-name">Adepa</p>
+          <p class="party-role">Bridesmaid</p>
+          <p class="party-desc">The bride's cousin</p>
+        </div>
 
-      <div class="party-member">
-        <img class="party-photo" src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/Mrs%20Owusu%20Agyeman.jpeg" alt="Mrs Owusu Agyeman — Bridesmaid" loading="lazy">
-        <p class="party-name">Mrs Owusu Agyeman</p>
-        <p class="party-role">Bridesmaid</p>
-        <p class="party-desc">The bride's mpaninsem partner</p>
+        <div class="party-member">
+          <img class="party-photo" src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/Jammal.jpeg" alt="Jammal — Groomsman" loading="lazy">
+          <p class="party-name">Jammal</p>
+          <p class="party-role">Groomsman</p>
+          <p class="party-desc">Alhaji Groom</p>
+        </div>
+
+        <hr class="grid-divider" aria-hidden="true">
+
+        <div class="party-member">
+          <img class="party-photo" src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/Mrs%20Osei-Bobie.jpeg" alt="Mrs Osei-Bobie — Bridesmaid" loading="lazy">
+          <p class="party-name">Mrs Osei-Bobie</p>
+          <p class="party-role">Bridesmaid</p>
+          <p class="party-desc">The bride's partner in crime 😂</p>
+        </div>
+
+        <div class="party-member">
+          <img class="party-photo" src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/Prince.jpeg" alt="Prince — Groomsman" loading="lazy">
+          <p class="party-name">Prince</p>
+          <p class="party-role">Groomsman</p>
+          <p class="party-desc">Groom's Odogwu</p>
+        </div>
+
+        <hr class="grid-divider" aria-hidden="true">
+
+        <div class="party-member">
+          <img class="party-photo" src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/Mrs%20Owusu%20Agyeman.jpeg" alt="Mrs Owusu Agyeman — Bridesmaid" loading="lazy">
+          <p class="party-name">Mrs Owusu Agyeman</p>
+          <p class="party-role">Bridesmaid</p>
+          <p class="party-desc">The bride's mpaninsem partner</p>
+        </div>
+
+        <div class="party-member">
+          <img class="party-photo" src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/Sheik!.jpeg" alt="PaaKwesi — Groomsman" loading="lazy">
+          <p class="party-name">PaaKwesi</p>
+          <p class="party-role">Groomsman</p>
+          <p class="party-desc">Sheik!</p>
+        </div>
+
       </div>
 
     </div>
