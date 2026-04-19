@@ -262,6 +262,54 @@
       margin: 0 auto;
     }
 
+    /* ===== TABLE OF CONTENTS ===== */
+    .toc {
+      text-align: center;
+      padding: 0 16px 36px;
+    }
+
+    .toc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      max-width: 260px;
+      margin: 0 auto;
+    }
+
+    .toc-list li {
+      border-bottom: 1px solid rgba(197,165,90,0.18);
+    }
+
+    .toc-list li:last-child {
+      border-bottom: none;
+    }
+
+    .toc-list a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: var(--brown-mid);
+      text-decoration: none;
+      padding: 14px 4px;
+      transition: color 0.3s;
+    }
+
+    .toc-list a:hover,
+    .toc-list a:active {
+      color: var(--gold-dark);
+    }
+
+    .toc-arrow {
+      color: var(--gold);
+      font-size: 0.6rem;
+      flex-shrink: 0;
+      margin-left: 8px;
+    }
+
     /* ===== SECTION SHARED ===== */
     .section {
       padding: 40px 0 28px;
@@ -528,34 +576,6 @@
       border-radius: 3px;
     }
 
-    /* ===== PDF LINK ===== */
-    .pdf-link-wrapper {
-      margin-top: 24px;
-      text-align: center;
-    }
-
-    .pdf-link {
-      display: inline-block;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      color: var(--brown-dark);
-      text-decoration: none;
-      padding: 14px 28px;
-      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-      border: none;
-      border-radius: 6px;
-      box-shadow: 0 3px 12px rgba(197,165,90,0.35);
-      transition: all 0.3s;
-    }
-
-    .pdf-link:hover {
-      background: linear-gradient(135deg, var(--gold-light), var(--gold));
-      box-shadow: 0 4px 16px rgba(197,165,90,0.45);
-      transform: translateY(-1px);
-    }
-
     /* ===== BACK TO TOP ===== */
     .back-to-top-wrap {
       text-align: center;
@@ -637,12 +657,13 @@
 
     .header   { animation: fadeUp 0.7s ease-out both; }
     .welcome  { animation: fadeUp 0.7s 0.1s ease-out both; }
-    .section  { animation: fadeUp 0.7s 0.15s ease-out both; }
-    .footer   { animation: fadeUp 0.7s 0.2s ease-out both; }
+    .toc      { animation: fadeUp 0.7s 0.15s ease-out both; }
+    .section  { animation: fadeUp 0.7s 0.2s ease-out both; }
+    .footer   { animation: fadeUp 0.7s 0.25s ease-out both; }
 
     /* ===== PRINT ===== */
     @media print {
-      .back-to-top-wrap, .pdf-link-wrapper { display: none; }
+      .back-to-top-wrap { display: none; }
       body { background: #fff; }
       .section-card { box-shadow: none; border: 1px solid #ccc; }
     }
@@ -718,10 +739,21 @@
       </p>
     </section>
 
+    <!-- ===== TABLE OF CONTENTS ===== -->
+    <nav class="toc" aria-label="Page contents">
+      <ul class="toc-list">
+        <li><a href="#wedding-details"><span>Wedding Details</span><span class="toc-arrow">↓</span></a></li>
+        <li><a href="#style-guide"><span>Style Guide</span><span class="toc-arrow">↓</span></a></li>
+        <li><a href="party.html"><span>Meet the Bridal Party</span><span class="toc-arrow">→</span></a></li>
+        <li><a href="menu.html"><span>Reception Menu</span><span class="toc-arrow">→</span></a></li>
+        <li><a href="invitation.pdf" target="_blank" rel="noopener"><span>View Invitation</span><span class="toc-arrow">↗</span></a></li>
+      </ul>
+    </nav>
+
     <!-- ═══════════════════════════════════════════ -->
     <!-- SECTION 1 — WEDDING INFORMATION & GIFTS    -->
     <!-- ═══════════════════════════════════════════ -->
-    <section class="section" id="wedding-info">
+    <section class="section" id="wedding-details">
       <div class="section-card">
 
         <!-- Floral corner decorations — left vine -->
@@ -799,48 +831,6 @@
             </div>
           </div>
 
-          <!-- Style Guide -->
-          <div class="info-block">
-            <h3 class="info-heading">Style Guide</h3>
-            <div class="style-guide-cards">
-
-              <div class="style-card">
-                <p class="style-card-caption">“For Our Beautiful Mama’s &amp; Rich Aunties”</p>
-                <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/aunties.png" alt="Style inspiration for mothers and aunties — elegant gowns with fascinators" loading="lazy">
-              </div>
-
-              <hr class="style-card-divider" aria-hidden="true">
-
-              <div class="style-card">
-                <p class="style-card-caption">Fascinators Style Inspiration &amp; Guide</p>
-                <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/hats.png" alt="Fascinator style inspiration — bold elegant headpieces" loading="lazy">
-              </div>
-
-              <hr class="style-card-divider" aria-hidden="true">
-
-              <div class="style-card">
-                <p class="style-card-caption">“Ladies It’s Giving Wedding Slay!<br>Don’t Disappoint”</p>
-                <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/ladies.png" alt="Ladies style inspiration — stunning colorful gowns" loading="lazy">
-              </div>
-
-              <hr class="style-card-divider" aria-hidden="true">
-
-              <div class="style-card">
-                <p class="style-card-caption">“Gents Clean Fits &amp; Sharp Vibes Only!<br>Come Looking Like Money”</p>
-                <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/men.png" alt="Gentlemen style inspiration — black tie, sharp suits" loading="lazy">
-              </div>
-
-            </div>
-          </div>
-
-          <!-- ===== ACTION BUTTONS ===== -->
-          <div class="info-block" style="text-align:center;">
-            <a class="pdf-link" href="party.html">Meet the Wedding Party →</a>
-          </div>
-          <div class="info-block" style="text-align:center;">
-            <a class="pdf-link" href="invitation.pdf" target="_blank" rel="noopener">View Invitation ↗</a>
-          </div>
-
           <!-- RSVP -->
           <div class="info-block">
             <h3 class="info-heading">RSVP</h3>
@@ -871,8 +861,6 @@
             <span class="tag">#SSertified2026</span>
           </div>
 
-
-
           <div class="back-to-top-wrap">
             <a href="#top" class="back-to-top">↑ Back to Top</a>
           </div>
@@ -880,7 +868,89 @@
       </div>
     </section>
 
-    <!-- Reception Menu — will be added as a separate page later -->
+    <!-- SECTION 2 — STYLE GUIDE -->
+    <section class="section" id="style-guide">
+      <div class="section-card">
+
+        <div class="card-floral card-floral-tl" aria-hidden="true">
+          <svg viewBox="0 0 80 130" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <path d="M40 125 C38 100 20 90 18 70 C16 50 30 45 28 30 C26 18 35 10 40 5"
+                  stroke="currentColor" stroke-width="0.9"/>
+            <path d="M18 70 C10 65 8 55 16 52 C20 58 18 68 18 70Z" fill="currentColor" opacity="0.3"/>
+            <path d="M28 30 C36 26 38 18 32 16 C28 22 28 28 28 30Z" fill="currentColor" opacity="0.25"/>
+            <circle cx="18" cy="70" r="5" fill="currentColor" opacity="0.12"/>
+            <circle cx="18" cy="70" r="8" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+            <circle cx="40" cy="5" r="4" fill="currentColor" opacity="0.15"/>
+            <circle cx="40" cy="5" r="6.5" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+            <circle cx="28" cy="30" r="3.5" fill="currentColor" opacity="0.1"/>
+            <ellipse cx="40" cy="0" rx="2" ry="3.5" fill="currentColor" opacity="0.1"/>
+            <ellipse cx="45" cy="4" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(72 40 5)"/>
+            <ellipse cx="43" cy="10" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(144 40 5)"/>
+            <ellipse cx="37" cy="10" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(216 40 5)"/>
+            <ellipse cx="35" cy="4" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(288 40 5)"/>
+          </svg>
+        </div>
+
+        <div class="card-floral card-floral-br" aria-hidden="true">
+          <svg viewBox="0 0 80 130" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <path d="M40 125 C38 100 20 90 18 70 C16 50 30 45 28 30 C26 18 35 10 40 5"
+                  stroke="currentColor" stroke-width="0.9"/>
+            <path d="M18 70 C10 65 8 55 16 52 C20 58 18 68 18 70Z" fill="currentColor" opacity="0.3"/>
+            <path d="M28 30 C36 26 38 18 32 16 C28 22 28 28 28 30Z" fill="currentColor" opacity="0.25"/>
+            <circle cx="18" cy="70" r="5" fill="currentColor" opacity="0.12"/>
+            <circle cx="18" cy="70" r="8" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+            <circle cx="40" cy="5" r="4" fill="currentColor" opacity="0.15"/>
+            <circle cx="40" cy="5" r="6.5" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+            <circle cx="28" cy="30" r="3.5" fill="currentColor" opacity="0.1"/>
+            <ellipse cx="40" cy="0" rx="2" ry="3.5" fill="currentColor" opacity="0.1"/>
+            <ellipse cx="45" cy="4" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(72 40 5)"/>
+            <ellipse cx="43" cy="10" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(144 40 5)"/>
+            <ellipse cx="37" cy="10" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(216 40 5)"/>
+            <ellipse cx="35" cy="4" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(288 40 5)"/>
+          </svg>
+        </div>
+
+        <div class="section-inner">
+          <h2 class="section-title">Style Guide</h2>
+          <p class="section-subtitle">What to Wear</p>
+          <hr class="section-rule">
+
+          <div class="style-guide-cards">
+
+            <div class="style-card">
+              <p class="style-card-caption">“For Our Beautiful Mama’s &amp; Rich Aunties”</p>
+              <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/aunties.png" alt="Style inspiration for mothers and aunties" loading="lazy">
+            </div>
+
+            <hr class="style-card-divider" aria-hidden="true">
+
+            <div class="style-card">
+              <p class="style-card-caption">Fascinators Style Inspiration &amp; Guide</p>
+              <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/hats.png" alt="Fascinator style inspiration" loading="lazy">
+            </div>
+
+            <hr class="style-card-divider" aria-hidden="true">
+
+            <div class="style-card">
+              <p class="style-card-caption">“Ladies It’s Giving Wedding Slay!<br>Don’t Disappoint”</p>
+              <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/ladies.png" alt="Ladies style inspiration" loading="lazy">
+            </div>
+
+            <hr class="style-card-divider" aria-hidden="true">
+
+            <div class="style-card">
+              <p class="style-card-caption">“Gents Clean Fits &amp; Sharp Vibes Only!<br>Come Looking Like Money”</p>
+              <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/men.png" alt="Gentlemen style inspiration" loading="lazy">
+            </div>
+
+          </div>
+
+          <div class="back-to-top-wrap">
+            <a href="#top" class="back-to-top">↑ Back to Top</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
