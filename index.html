@@ -538,19 +538,22 @@
       display: inline-block;
       font-family: 'Montserrat', sans-serif;
       font-size: 0.72rem;
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: 0.14em;
-      color: var(--gold-dark);
+      color: var(--brown-dark);
       text-decoration: none;
-      padding: 12px 24px;
-      border: 1px solid var(--gold-light);
-      border-radius: 4px;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      border: none;
+      border-radius: 6px;
+      box-shadow: 0 3px 12px rgba(197,165,90,0.35);
       transition: all 0.3s;
     }
 
     .pdf-link:hover {
-      background: rgba(197,165,90,0.1);
-      border-color: var(--gold);
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      box-shadow: 0 4px 16px rgba(197,165,90,0.45);
+      transform: translateY(-1px);
     }
 
     /* ===== BACK TO TOP ===== */
@@ -830,6 +833,14 @@
             </div>
           </div>
 
+          <!-- ===== ACTION BUTTONS ===== -->
+          <div class="info-block" style="text-align:center;">
+            <a class="pdf-link" href="party.html">Meet the Wedding Party →</a>
+          </div>
+          <div class="info-block" style="text-align:center;">
+            <a class="pdf-link" href="invitation.pdf" target="_blank" rel="noopener">View Invitation ↗</a>
+          </div>
+
           <!-- RSVP -->
           <div class="info-block">
             <h3 class="info-heading">RSVP</h3>
@@ -860,18 +871,7 @@
             <span class="tag">#SSertified2026</span>
           </div>
 
-          <!-- Wedding Party -->
-          <div class="info-block">
-            <h3 class="info-heading">Meet the Wedding Party</h3>
-            <a class="pdf-link" href="party.html">View Wedding Party →</a>
-          </div>
 
-          <!-- ===== INVITATION PDF LINK ===== -->
-          <div class="pdf-link-wrapper">
-            <a class="pdf-link" href="invitation.pdf" target="_blank" rel="noopener">
-              View Invitation ↗
-            </a>
-          </div>
 
           <div class="back-to-top-wrap">
             <a href="#top" class="back-to-top">↑ Back to Top</a>
