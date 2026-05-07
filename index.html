@@ -79,7 +79,31 @@
     /* ===== HEADER ===== */
     .header {
       text-align: center;
-      padding: 36px 16px 12px;
+      padding: 52px 16px 44px;
+      position: relative;
+      background-image: url('https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/chinchi%20%20and%20simon.jpeg');
+      background-size: cover;
+      background-position: center 18%;
+      border-radius: 0 0 14px 14px;
+      overflow: hidden;
+    }
+
+    /* Cream-wash gradient over photo — keeps text colours intact */
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(245, 235, 215, 0.48) 0%,
+        rgba(245, 240, 232, 0.80) 100%
+      );
+      z-index: 0;
+    }
+
+    .header > * {
+      position: relative;
+      z-index: 1;
     }
 
     /* Monogram */
@@ -120,24 +144,6 @@
       color: var(--gold);
       margin-top: 8px;
       text-transform: uppercase;
-    }
-
-    /* ===== COUPLE HERO PHOTO ===== */
-    .couple-hero {
-      margin: 16px 0 0;
-      border-radius: 10px;
-      overflow: hidden;
-      position: relative;
-      box-shadow: 0 8px 36px rgba(58,47,34,0.14);
-      border: 1.5px solid var(--gold-light);
-    }
-
-    .couple-hero img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 3 / 2;
-      object-fit: cover;
-      object-position: center 18%;
     }
 
     /* ===== FLORAL SVG DIVIDER ===== */
@@ -605,12 +611,6 @@
       </h1>
       <p class="hashtag-header">#SSertified2026</p>
     </header>
-
-    <!-- ===== COUPLE HERO PHOTO ===== -->
-    <div class="couple-hero">
-      <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/chinchi%20%20and%20simon.jpeg"
-           alt="Samuel & Abena" loading="eager">
-    </div>
 
     <!-- ===== FLORAL DIVIDER — vine with blossoms ===== -->
     <div class="floral-divider" aria-hidden="true">
