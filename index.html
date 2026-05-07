@@ -86,16 +86,16 @@
       background-position: center 18%;
     }
 
-    /* Cream-wash overlay — transparent top, opaque cream at bottom */
+    /* Dark overlay — deep at top, fades to cream at bottom */
     .hero::before {
       content: '';
       position: absolute;
       inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(58, 47, 34, 0.06) 0%,
-        rgba(245, 240, 232, 0.50) 55%,
-        rgba(245, 240, 232, 1.00) 100%
+        rgba(0, 0, 0, 0.28) 0%,
+        rgba(10, 6, 2, 0.52) 50%,
+        rgba(245, 240, 232, 1.00) 92%
       );
       z-index: 0;
     }
@@ -118,6 +118,28 @@
     .hero-toc   { display: none; }
     .mobile-toc { display: block; }
 
+    /* ===== SCROLL HINT (mobile only) ===== */
+    .scroll-hint {
+      position: absolute;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.70);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .scroll-hint svg {
+      width: 32px;
+      height: 32px;
+      animation: scrollBounce 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateY(0); opacity: 0.70; }
+      50%       { transform: translateY(8px); opacity: 1; }
+    }
+
     /* Monogram */
     .monogram {
       width: 100px;
@@ -129,6 +151,7 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
+      filter: brightness(0) invert(1);
     }
 
     .couple-names {
@@ -137,13 +160,13 @@
       font-weight: 300;
       letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: var(--brown-dark);
+      color: #ffffff;
     }
 
     .couple-names .ampersand {
       font-style: italic;
       font-weight: 400;
-      color: var(--gold);
+      color: var(--gold-shimmer);
       font-size: 2rem;
       padding: 0 2px;
     }
@@ -153,7 +176,7 @@
       font-size: 0.72rem;
       font-weight: 400;
       letter-spacing: 0.22em;
-      color: var(--gold);
+      color: var(--gold-shimmer);
       margin-top: 8px;
       text-transform: uppercase;
     }
@@ -588,7 +611,7 @@
       /* ===== DESKTOP SPLIT HERO ===== */
       .hero {
         display: grid;
-        grid-template-columns: 60% 40%;
+        grid-template-columns: 33% 67%;
         min-height: 100svh;
         background: none; /* photo moves to left panel */
       }
@@ -599,21 +622,26 @@
         display: block;
         background-image: url('https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/chinchi%20%20and%20simon.jpeg');
         background-size: cover;
-        background-position: center 18%;
+        background-position: center 22%;
       }
 
       .hero-info-panel {
         background: var(--cream);
         min-height: unset;
-        padding: 52px 44px;
+        padding: 52px 52px;
         border-left: 1px solid rgba(197,165,90,0.22);
         box-shadow: -8px 0 32px rgba(58,47,34,0.06) inset;
       }
 
-      .hero-info-panel .couple-names { font-size: 2.3rem; }
+      /* Revert to dark text on cream right panel */
+      .hero-info-panel .couple-names        { font-size: 2.3rem; color: var(--brown-dark); }
+      .hero-info-panel .couple-names .ampersand { color: var(--gold); }
+      .hero-info-panel .hashtag-header      { color: var(--gold); }
+      .hero-info-panel .monogram img        { filter: none; }
 
       .hero-toc   { display: block; margin-top: 36px; }
       .mobile-toc { display: none; }
+      .scroll-hint { display: none; }
     }
 
     /* ===== ENTRANCE ANIMATION ===== */
@@ -664,6 +692,13 @@
           <li><a href="invitation.pdf" target="_blank" rel="noopener"><span>View Invitation</span><span class="toc-arrow">↗</span></a></li>
         </ul>
       </nav>
+    </div>
+
+    <!-- Down arrow scroll hint (mobile only) -->
+    <div class="scroll-hint" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
     </div>
   </div>
 
