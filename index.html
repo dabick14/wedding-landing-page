@@ -76,35 +76,47 @@
       padding: 0 18px;
     }
 
-    /* ===== HEADER ===== */
-    .header {
-      text-align: center;
-      padding: 52px 16px 44px;
+    /* ===== HERO ===== */
+    /* Mobile default: full-bleed photo, names centred over it */
+    .hero {
       position: relative;
+      z-index: 1;
       background-image: url('https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/chinchi%20%20and%20simon.jpeg');
       background-size: cover;
       background-position: center 18%;
-      border-radius: 0 0 14px 14px;
-      overflow: hidden;
     }
 
-    /* Cream-wash gradient over photo — keeps text colours intact */
-    .header::before {
+    /* Cream-wash overlay — transparent top, opaque cream at bottom */
+    .hero::before {
       content: '';
       position: absolute;
       inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(245, 235, 215, 0.48) 0%,
-        rgba(245, 240, 232, 0.80) 100%
+        rgba(58, 47, 34, 0.06) 0%,
+        rgba(245, 240, 232, 0.50) 55%,
+        rgba(245, 240, 232, 1.00) 100%
       );
       z-index: 0;
     }
 
-    .header > * {
+    .hero-photo-panel { display: none; } /* desktop only */
+
+    .hero-info-panel {
       position: relative;
       z-index: 1;
+      text-align: center;
+      padding: 72px 24px 52px;
+      min-height: 85svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
+
+    /* TOC visibility defaults (mobile) */
+    .hero-toc   { display: none; }
+    .mobile-toc { display: block; }
 
     /* Monogram */
     .monogram {
@@ -571,8 +583,37 @@
 
     @media (min-width: 768px) {
       .page-wrapper { max-width: 580px; }
-      .couple-names { font-size: 2.2rem; }
       .section-inner { padding: 48px 40px 36px; }
+
+      /* ===== DESKTOP SPLIT HERO ===== */
+      .hero {
+        display: grid;
+        grid-template-columns: 60% 40%;
+        min-height: 100svh;
+        background: none; /* photo moves to left panel */
+      }
+
+      .hero::before { display: none; }
+
+      .hero-photo-panel {
+        display: block;
+        background-image: url('https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/chinchi%20%20and%20simon.jpeg');
+        background-size: cover;
+        background-position: center 18%;
+      }
+
+      .hero-info-panel {
+        background: var(--cream);
+        min-height: unset;
+        padding: 52px 44px;
+        border-left: 1px solid rgba(197,165,90,0.22);
+        box-shadow: -8px 0 32px rgba(58,47,34,0.06) inset;
+      }
+
+      .hero-info-panel .couple-names { font-size: 2.3rem; }
+
+      .hero-toc   { display: block; margin-top: 36px; }
+      .mobile-toc { display: none; }
     }
 
     /* ===== ENTRANCE ANIMATION ===== */
@@ -581,11 +622,10 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    .header   { animation: fadeUp 0.7s ease-out both; }
-    .welcome  { animation: fadeUp 0.7s 0.1s ease-out both; }
-    .toc      { animation: fadeUp 0.7s 0.15s ease-out both; }
-    .section  { animation: fadeUp 0.7s 0.2s ease-out both; }
-    .footer   { animation: fadeUp 0.7s 0.25s ease-out both; }
+    .hero-info-panel { animation: fadeUp 0.8s ease-out both; }
+    .mobile-toc      { animation: fadeUp 0.7s 0.1s ease-out both; }
+    .section         { animation: fadeUp 0.7s 0.2s ease-out both; }
+    .footer          { animation: fadeUp 0.7s 0.25s ease-out both; }
 
     /* ===== PRINT ===== */
     @media print {
@@ -597,20 +637,37 @@
 </head>
 <body>
 
-  <div class="page-wrapper" id="top">
+  <!-- ===== HERO ===== -->
+  <div class="hero" id="top">
+    <!-- Left column: photo (desktop only) -->
+    <div class="hero-photo-panel" aria-hidden="true"></div>
 
-    <!-- ===== HEADER ===== -->
-    <header class="header">
-      <!-- Monogram -->
+    <!-- Right column (desktop) / overlay (mobile): identity & navigation -->
+    <div class="hero-info-panel">
       <div class="monogram">
         <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/monogram.png" alt="S & A monogram">
       </div>
-
       <h1 class="couple-names">
         Samuel <span class="ampersand">&amp;</span> Abena
       </h1>
       <p class="hashtag-header">#SSertified2026</p>
-    </header>
+
+      <!-- TOC — shown in right panel on desktop only -->
+      <nav class="toc hero-toc" aria-label="Page contents">
+        <ul class="toc-list">
+          <li><a href="#wedding-details"><span>Wedding Details</span><span class="toc-arrow">↓</span></a></li>
+          <li><a href="#style-guide"><span>Style Guide</span><span class="toc-arrow">↓</span></a></li>
+          <li><a href="program.html"><span>Wedding Program</span><span class="toc-arrow">→</span></a></li>
+          <li><a href="party.html"><span>Meet the Bridal Party</span><span class="toc-arrow">→</span></a></li>
+          <li><a href="menu.html"><span>Reception Menu</span><span class="toc-arrow">→</span></a></li>
+          <li><a href="accommodation.html"><span>Accommodation</span><span class="toc-arrow">→</span></a></li>
+          <li><a href="invitation.pdf" target="_blank" rel="noopener"><span>View Invitation</span><span class="toc-arrow">↗</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div class="page-wrapper">
 
     <!-- ===== FLORAL DIVIDER — vine with blossoms ===== -->
     <div class="floral-divider" aria-hidden="true">
@@ -641,15 +698,8 @@
       Guests may access this page anytime by scanning the QR code on their invitation.
     </p>
 
-    <!-- ===== WELCOME ===== -->
-    <section class="welcome">
-      <p class="welcome-text">
-        Welcome to our wedding celebration.
-      </p>
-    </section>
-
-    <!-- ===== TABLE OF CONTENTS ===== -->
-    <nav class="toc" aria-label="Page contents">
+    <!-- ===== TABLE OF CONTENTS (mobile — appears below hero) ===== -->
+    <nav class="toc mobile-toc" aria-label="Page contents">
       <ul class="toc-list">
         <li><a href="#wedding-details"><span>Wedding Details</span><span class="toc-arrow">↓</span></a></li>
         <li><a href="#style-guide"><span>Style Guide</span><span class="toc-arrow">↓</span></a></li>
