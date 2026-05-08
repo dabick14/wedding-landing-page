@@ -74,9 +74,11 @@
       max-width: 460px;
       margin: -28px auto 0;
       padding: 28px 18px 0;
-      background: var(--cream);
+      background: rgba(8,4,2,0.55);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-radius: 20px 20px 0 0;
-      box-shadow: 0 -6px 28px rgba(58,47,34,0.13);
+      box-shadow: 0 -8px 32px rgba(0,0,0,0.30);
     }
 
     /* ===== HERO ===== */
@@ -653,6 +655,23 @@
     }
 
     /* ===== RESPONSIVE ===== */
+
+    /* Mobile: white/gold text inside dark frosted card */
+    @media (max-width: 767px) {
+      .qr-note { color: rgba(255,255,255,0.45); }
+
+      .mobile-toc .toc-list a { color: rgba(255,255,255,0.88); }
+      .mobile-toc .toc-list li { border-bottom-color: rgba(255,255,255,0.10); }
+      .mobile-toc .toc-list a:hover,
+      .mobile-toc .toc-list a:active { color: var(--gold-shimmer); }
+
+      .mobile-location-links .location-label { color: rgba(255,255,255,0.88); }
+      .mobile-location-links .location-item  { border-bottom-color: rgba(255,255,255,0.08); }
+
+      .footer-text    { color: rgba(255,255,255,0.50); }
+      .footer-hashtag { color: var(--gold-shimmer); }
+    }
+
     @media (min-width: 480px) {
       .page-wrapper { max-width: 500px; }
       .couple-names { font-size: 2rem; }
