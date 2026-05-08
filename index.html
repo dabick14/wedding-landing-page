@@ -100,7 +100,7 @@
       z-index: 0;
     }
 
-    .hero-photo-panel { display: none; } /* desktop only */
+    .hero-photo-panel-right { display: none; } /* desktop only */
 
     .hero-info-panel {
       position: relative;
@@ -611,9 +611,9 @@
       /* ===== DESKTOP SPLIT HERO ===== */
       .hero {
         display: grid;
-        grid-template-columns: 33% 67%;
+        grid-template-columns: 1fr 1.5fr 1fr;
         min-height: 100svh;
-        background: none; /* photo moves to left panel */
+        background: none;
       }
 
       .hero::before { display: none; }
@@ -625,12 +625,20 @@
         background-position: center 22%;
       }
 
+      .hero-photo-panel-right {
+        display: block;
+        background-image: url('https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/chinchisimon2.jpeg');
+        background-size: cover;
+        background-position: center 20%;
+        border-left: 1px solid rgba(197,165,90,0.22);
+      }
+
       .hero-info-panel {
         background: var(--cream);
         min-height: unset;
-        padding: 52px 52px;
+        padding: 52px 40px;
         border-left: 1px solid rgba(197,165,90,0.22);
-        box-shadow: -8px 0 32px rgba(58,47,34,0.06) inset;
+        border-right: 1px solid rgba(197,165,90,0.22);
       }
 
       /* Revert to dark text on cream right panel */
@@ -683,8 +691,8 @@
       <!-- TOC — shown in right panel on desktop only -->
       <nav class="toc hero-toc" aria-label="Page contents">
         <ul class="toc-list">
-          <li><a href="#wedding-details"><span>Wedding Details</span><span class="toc-arrow">↓</span></a></li>
-          <li><a href="#style-guide"><span>Style Guide</span><span class="toc-arrow">↓</span></a></li>
+          <li><a href="details.html"><span>Wedding Details</span><span class="toc-arrow">→</span></a></li>
+          <li><a href="details.html#style-guide"><span>Style Guide</span><span class="toc-arrow">→</span></a></li>
           <li><a href="program.html"><span>Wedding Program</span><span class="toc-arrow">→</span></a></li>
           <li><a href="party.html"><span>Meet the Bridal Party</span><span class="toc-arrow">→</span></a></li>
           <li><a href="menu.html"><span>Reception Menu</span><span class="toc-arrow">→</span></a></li>
@@ -693,6 +701,9 @@
         </ul>
       </nav>
     </div>
+
+    <!-- Right photo panel (desktop only) -->
+    <div class="hero-photo-panel-right" aria-hidden="true"></div>
 
     <!-- Down arrow scroll hint (mobile only) -->
     <div class="scroll-hint" aria-hidden="true">
@@ -736,8 +747,8 @@
     <!-- ===== TABLE OF CONTENTS (mobile — appears below hero) ===== -->
     <nav class="toc mobile-toc" aria-label="Page contents">
       <ul class="toc-list">
-        <li><a href="#wedding-details"><span>Wedding Details</span><span class="toc-arrow">↓</span></a></li>
-        <li><a href="#style-guide"><span>Style Guide</span><span class="toc-arrow">↓</span></a></li>
+        <li><a href="details.html"><span>Wedding Details</span><span class="toc-arrow">→</span></a></li>
+        <li><a href="details.html#style-guide"><span>Style Guide</span><span class="toc-arrow">→</span></a></li>
         <li><a href="program.html"><span>Wedding Program</span><span class="toc-arrow">→</span></a></li>
         <li><a href="party.html"><span>Meet the Bridal Party</span><span class="toc-arrow">→</span></a></li>
         <li><a href="menu.html"><span>Reception Menu</span><span class="toc-arrow">→</span></a></li>
@@ -745,217 +756,6 @@
         <li><a href="invitation.pdf" target="_blank" rel="noopener"><span>View Invitation</span><span class="toc-arrow">↗</span></a></li>
       </ul>
     </nav>
-
-    <!-- ═══════════════════════════════════════════ -->
-    <!-- SECTION 1 — WEDDING INFORMATION & GIFTS    -->
-    <!-- ═══════════════════════════════════════════ -->
-    <section class="section" id="wedding-details">
-      <div class="section-card">
-
-        <!-- Floral corner decorations — left vine -->
-        <div class="card-floral card-floral-tl" aria-hidden="true">
-          <svg viewBox="0 0 80 130" xmlns="http://www.w3.org/2000/svg" fill="none">
-            <!-- Vine stem -->
-            <path d="M40 125 C38 100 20 90 18 70 C16 50 30 45 28 30 C26 18 35 10 40 5"
-                  stroke="currentColor" stroke-width="0.9"/>
-            <!-- Leaves -->
-            <path d="M18 70 C10 65 8 55 16 52 C20 58 18 68 18 70Z" fill="currentColor" opacity="0.3"/>
-            <path d="M28 30 C36 26 38 18 32 16 C28 22 28 28 28 30Z" fill="currentColor" opacity="0.25"/>
-            <!-- Blossoms -->
-            <circle cx="18" cy="70" r="5" fill="currentColor" opacity="0.12"/>
-            <circle cx="18" cy="70" r="8" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
-            <circle cx="40" cy="5" r="4" fill="currentColor" opacity="0.15"/>
-            <circle cx="40" cy="5" r="6.5" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
-            <circle cx="28" cy="30" r="3.5" fill="currentColor" opacity="0.1"/>
-            <!-- Petal details on top blossom -->
-            <ellipse cx="40" cy="0" rx="2" ry="3.5" fill="currentColor" opacity="0.1"/>
-            <ellipse cx="45" cy="4" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(72 40 5)"/>
-            <ellipse cx="43" cy="10" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(144 40 5)"/>
-            <ellipse cx="37" cy="10" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(216 40 5)"/>
-            <ellipse cx="35" cy="4" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(288 40 5)"/>
-          </svg>
-        </div>
-
-        <!-- Right vine (mirrored) -->
-        <div class="card-floral card-floral-br" aria-hidden="true">
-          <svg viewBox="0 0 80 130" xmlns="http://www.w3.org/2000/svg" fill="none">
-            <path d="M40 125 C38 100 20 90 18 70 C16 50 30 45 28 30 C26 18 35 10 40 5"
-                  stroke="currentColor" stroke-width="0.9"/>
-            <path d="M18 70 C10 65 8 55 16 52 C20 58 18 68 18 70Z" fill="currentColor" opacity="0.3"/>
-            <path d="M28 30 C36 26 38 18 32 16 C28 22 28 28 28 30Z" fill="currentColor" opacity="0.25"/>
-            <circle cx="18" cy="70" r="5" fill="currentColor" opacity="0.12"/>
-            <circle cx="18" cy="70" r="8" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
-            <circle cx="40" cy="5" r="4" fill="currentColor" opacity="0.15"/>
-            <circle cx="40" cy="5" r="6.5" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
-            <circle cx="28" cy="30" r="3.5" fill="currentColor" opacity="0.1"/>
-            <ellipse cx="40" cy="0" rx="2" ry="3.5" fill="currentColor" opacity="0.1"/>
-            <ellipse cx="45" cy="4" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(72 40 5)"/>
-            <ellipse cx="43" cy="10" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(144 40 5)"/>
-            <ellipse cx="37" cy="10" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(216 40 5)"/>
-            <ellipse cx="35" cy="4" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(288 40 5)"/>
-          </svg>
-        </div>
-
-        <div class="section-inner">
-          <h2 class="section-title">Wedding Information</h2>
-          <p class="section-subtitle">Details &amp; Gifts</p>
-          <hr class="section-rule">
-
-          <!-- Note on Gifts -->
-          <div class="info-block">
-            <h3 class="info-heading">Note on Gifts</h3>
-            <p class="info-text">
-              We will be truly blessed by your<br>
-              presence &amp; your prayers.<br>
-              If you wish to give us a gift,<br>
-              monetary gifts is what we suggest.
-            </p>
-          </div>
-
-          <!-- MoMo -->
-          <div class="info-block">
-            <h3 class="info-heading">Mobile Money (MoMo)</h3>
-            <div class="momo-number">0544070812</div>
-            <p class="momo-name">JESSTIMONY ENT / Samuel Simon Awere Damoah</p>
-            <div class="momo-number">0552565248</div>
-            <p class="momo-name">Abena Serwah Addai-Kyenkyehene</p>
-          </div>
-
-          <!-- Access Card -->
-          <div class="info-block">
-            <h3 class="info-heading">Important Reminder</h3>
-            <div class="highlight-box">
-              <p>Please remember to pick your <strong>physical access card</strong> for entry to the reception.</p>
-            </div>
-          </div>
-
-          <!-- RSVP -->
-          <div class="info-block">
-            <h3 class="info-heading">RSVP</h3>
-            <div class="rsvp-contacts">
-              <div class="rsvp-person">
-                <span class="name">Junior:</span>
-                <a href="tel:0553189883">0553 189 883</a>
-              </div>
-              <div class="rsvp-person">
-                <span class="name">Eunice:</span>
-                <a href="tel:0242545817">0242 545 817</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Event Notes -->
-          <div class="info-block">
-            <h3 class="info-heading">Please Note</h3>
-            <p class="badge">Strictly By Invitation</p>
-            <p class="info-text" style="margin-top: 12px; font-size: 0.9rem;">
-              Kindly note this is an <strong>adult-only event</strong>.
-            </p>
-          </div>
-
-          <!-- Hashtag -->
-          <div class="info-block">
-            <h3 class="info-heading">Wedding Hashtag</h3>
-            <span class="tag">#SSertified2026</span>
-          </div>
-
-          <div class="back-to-top-wrap">
-            <a href="#top" class="back-to-top">↑ Back to Top</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 2 — STYLE GUIDE -->
-    <section class="section" id="style-guide">
-      <div class="section-card">
-
-        <div class="card-floral card-floral-tl" aria-hidden="true">
-          <svg viewBox="0 0 80 130" xmlns="http://www.w3.org/2000/svg" fill="none">
-            <path d="M40 125 C38 100 20 90 18 70 C16 50 30 45 28 30 C26 18 35 10 40 5"
-                  stroke="currentColor" stroke-width="0.9"/>
-            <path d="M18 70 C10 65 8 55 16 52 C20 58 18 68 18 70Z" fill="currentColor" opacity="0.3"/>
-            <path d="M28 30 C36 26 38 18 32 16 C28 22 28 28 28 30Z" fill="currentColor" opacity="0.25"/>
-            <circle cx="18" cy="70" r="5" fill="currentColor" opacity="0.12"/>
-            <circle cx="18" cy="70" r="8" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
-            <circle cx="40" cy="5" r="4" fill="currentColor" opacity="0.15"/>
-            <circle cx="40" cy="5" r="6.5" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
-            <circle cx="28" cy="30" r="3.5" fill="currentColor" opacity="0.1"/>
-            <ellipse cx="40" cy="0" rx="2" ry="3.5" fill="currentColor" opacity="0.1"/>
-            <ellipse cx="45" cy="4" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(72 40 5)"/>
-            <ellipse cx="43" cy="10" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(144 40 5)"/>
-            <ellipse cx="37" cy="10" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(216 40 5)"/>
-            <ellipse cx="35" cy="4" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(288 40 5)"/>
-          </svg>
-        </div>
-
-        <div class="card-floral card-floral-br" aria-hidden="true">
-          <svg viewBox="0 0 80 130" xmlns="http://www.w3.org/2000/svg" fill="none">
-            <path d="M40 125 C38 100 20 90 18 70 C16 50 30 45 28 30 C26 18 35 10 40 5"
-                  stroke="currentColor" stroke-width="0.9"/>
-            <path d="M18 70 C10 65 8 55 16 52 C20 58 18 68 18 70Z" fill="currentColor" opacity="0.3"/>
-            <path d="M28 30 C36 26 38 18 32 16 C28 22 28 28 28 30Z" fill="currentColor" opacity="0.25"/>
-            <circle cx="18" cy="70" r="5" fill="currentColor" opacity="0.12"/>
-            <circle cx="18" cy="70" r="8" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
-            <circle cx="40" cy="5" r="4" fill="currentColor" opacity="0.15"/>
-            <circle cx="40" cy="5" r="6.5" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
-            <circle cx="28" cy="30" r="3.5" fill="currentColor" opacity="0.1"/>
-            <ellipse cx="40" cy="0" rx="2" ry="3.5" fill="currentColor" opacity="0.1"/>
-            <ellipse cx="45" cy="4" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(72 40 5)"/>
-            <ellipse cx="43" cy="10" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(144 40 5)"/>
-            <ellipse cx="37" cy="10" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(216 40 5)"/>
-            <ellipse cx="35" cy="4" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(288 40 5)"/>
-          </svg>
-        </div>
-
-        <div class="section-inner">
-          <h2 class="section-title">Style Guide</h2>
-          <p class="section-subtitle">What to Wear</p>
-          <hr class="section-rule">
-
-          <div class="style-guide-cards">
-
-            <div class="style-card">
-              <p class="style-card-caption">“For Our Beautiful Mama’s &amp; Rich Aunties”</p>
-              <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/aunties.png" alt="Style inspiration for mothers and aunties" loading="lazy">
-            </div>
-
-            <hr class="style-card-divider" aria-hidden="true">
-
-            <div class="style-card">
-              <p class="style-card-caption">Fascinators Style Inspiration &amp; Guide</p>
-              <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/hats.png" alt="Fascinator style inspiration" loading="lazy">
-            </div>
-
-            <hr class="style-card-divider" aria-hidden="true">
-
-            <div class="style-card">
-              <p class="style-card-caption">“Ladies It’s Giving Wedding Slay!<br>Don’t Disappoint”</p>
-              <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/ladies.png" alt="Ladies style inspiration" loading="lazy">
-            </div>
-
-            <hr class="style-card-divider" aria-hidden="true">
-
-            <div class="style-card">
-              <p class="style-card-caption">“Gents Clean Fits &amp; Sharp Vibes Only!<br>Come Looking Like Money”</p>
-              <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/men.png" alt="Gentlemen style inspiration" loading="lazy">
-            </div>
-
-          </div>
-
-          <div class="back-to-top-wrap">
-            <a href="#top" class="back-to-top">↑ Back to Top</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== CLOSING COUPLE PHOTO ===== -->
-    <div style="margin: 32px 0 0; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 36px rgba(58,47,34,0.14); border: 1.5px solid var(--gold-light);">
-      <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/chinchisimon3.jpeg"
-           alt="Samuel & Abena" loading="lazy"
-           style="display:block; width:100%; aspect-ratio:3/2; object-fit:cover; object-position:center 20%;">
-    </div>
 
     <!-- ===== FOOTER ===== -->
     <footer class="footer">

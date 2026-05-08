@@ -47,6 +47,16 @@
       z-index: 0;
     }
 
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: url('https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/chinchisimon3.jpeg') center/cover no-repeat;
+      opacity: 0.05;
+      pointer-events: none;
+      z-index: 0;
+    }
+
     .site-nav {
       position: sticky;
       top: 0;
@@ -310,6 +320,7 @@
     </div>
     <div class="nav-links">
       <a href="index.html">Home</a>
+      <a href="details.html">Details</a>
       <a href="party.html">Wedding Party</a>
       <a href="program.html" class="active">Program</a>
       <a href="menu.html">Menu</a>

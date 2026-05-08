@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+  <title>Wedding Details — #SSertified2026</title>
+  <meta name="description" content="Wedding information, gifts, RSVP and style guide for Samuel & Abena's celebration.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    :root {
+      --gold:        #C5A55A;
+      --gold-light:  #D6C68C;
+      --gold-shimmer:#E0D4A8;
+      --gold-dark:   #A08030;
+      --taupe:       #C4B7A4;
+      --taupe-light: #D1C5B3;
+      --taupe-card:  #CBC0AD;
+      --cream:       #F5F0E8;
+      --cream-warm:  #EDE6DA;
+      --brown-dark:  #3A2F22;
+      --brown-mid:   #584A38;
+      --brown-light: #7E7060;
+      --marble-vein: rgba(200, 185, 165, 0.25);
+    }
+
+    body {
+      font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+      background-color: var(--cream);
+      color: var(--brown-dark);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(135deg, transparent 42%, var(--marble-vein) 43%, transparent 44%),
+        linear-gradient(225deg, transparent 48%, rgba(200,185,165,0.12) 49%, transparent 50%),
+        radial-gradient(ellipse at 15% 25%, rgba(197,165,90,0.06) 0%, transparent 55%),
+        radial-gradient(ellipse at 75% 65%, rgba(200,185,165,0.10) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 90%, rgba(197,165,90,0.04) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Subtle couple photo wash */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: url('https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/chinchisimon3.jpeg') center/cover no-repeat;
+      opacity: 0.05;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ===== NAV ===== */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(245,240,232,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(197,165,90,0.15);
+    }
+
+    .nav-inner {
+      max-width: 580px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 18px;
+    }
+
+    .nav-monogram { width: 36px; height: 36px; flex-shrink: 0; }
+    .nav-monogram img { width: 100%; height: 100%; object-fit: contain; }
+
+    .nav-toggle {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--brown-dark);
+      border-radius: 1px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      padding: 8px 0 16px;
+      background: rgba(245,240,232,0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(197,165,90,0.15);
+    }
+
+    .nav-links.open { display: flex; }
+
+    .nav-links a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--brown-mid);
+      text-decoration: none;
+      padding: 12px 20px;
+      transition: color 0.3s;
+      width: 100%;
+      text-align: center;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--gold-dark); }
+
+    @media (min-width: 480px) {
+      .nav-inner { justify-content: center; }
+      .nav-toggle { display: none; }
+      .nav-links {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding: 0;
+        background: none;
+        backdrop-filter: none;
+        border-bottom: none;
+        gap: 4px;
+      }
+      .nav-links a { padding: 8px 12px; width: auto; }
+    }
+
+    /* ===== LAYOUT ===== */
+    .page-wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 460px;
+      margin: 0 auto;
+      padding: 0 18px;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      text-align: center;
+      padding: 36px 16px 12px;
+    }
+
+    .page-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--brown-dark);
+    }
+
+    .page-subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 6px;
+    }
+
+    .divider {
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      border: none;
+      margin: 16px auto 28px;
+    }
+
+    /* ===== SECTIONS ===== */
+    .section { padding: 12px 0 28px; }
+
+    .section-card {
+      background: var(--taupe-card);
+      border-radius: 10px;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(58,47,34,0.07);
+    }
+
+    .section-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 15%; right: 15%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .section-inner { padding: 36px 24px 28px; }
+
+    .section-title {
+      text-align: center;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 6px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--brown-light);
+      font-weight: 400;
+    }
+
+    .section-rule {
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      border: none;
+      margin: 16px auto 28px;
+    }
+
+    /* ===== FLORAL CARD CORNERS ===== */
+    .card-floral {
+      position: absolute;
+      color: var(--gold);
+      opacity: 0.18;
+      pointer-events: none;
+    }
+
+    .card-floral svg { width: 100%; height: 100%; }
+    .card-floral-tl { top: 8px; left: 8px; width: 80px; height: 120px; }
+    .card-floral-br { bottom: 8px; right: 8px; width: 80px; height: 120px; transform: rotate(180deg); }
+
+    /* ===== INFO BLOCKS ===== */
+    .info-block {
+      text-align: center;
+      margin-bottom: 24px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid rgba(197,165,90,0.18);
+    }
+
+    .info-block:last-of-type {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .info-heading {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .info-text {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--brown-dark);
+      letter-spacing: 0.03em;
+      line-height: 1.85;
+    }
+
+    .info-text strong { font-weight: 500; }
+
+    .momo-number {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--gold-dark);
+      letter-spacing: 0.12em;
+      margin: 10px 0 6px;
+      padding: 8px 20px;
+      border: 1px solid var(--gold-light);
+      border-radius: 4px;
+      background: rgba(255,255,255,0.25);
+    }
+
+    .momo-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 400;
+      color: var(--brown-mid);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .highlight-box {
+      background: rgba(197,165,90,0.10);
+      border-left: 2.5px solid var(--gold);
+      padding: 14px 18px;
+      border-radius: 0 5px 5px 0;
+      margin: 10px 0;
+      text-align: left;
+    }
+
+    .highlight-box p {
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: var(--brown-dark);
+      letter-spacing: 0.03em;
+      line-height: 1.7;
+    }
+
+    .highlight-box p strong { font-weight: 500; }
+
+    .rsvp-contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .rsvp-person {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .rsvp-person .name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brown-mid);
+      min-width: 60px;
+      text-align: right;
+    }
+
+    .rsvp-person a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--gold-dark);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      -webkit-text-fill-color: var(--gold-dark);
+    }
+
+    .rsvp-person a:hover { text-decoration: underline; }
+
+    a[href^="tel"] {
+      color: inherit;
+      text-decoration: none;
+      -webkit-text-fill-color: inherit;
+    }
+
+    .tag {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      color: var(--gold-dark);
+      padding: 5px 16px;
+      border: 1px solid var(--gold-light);
+      border-radius: 20px;
+    }
+
+    .badge {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      background: rgba(197,165,90,0.12);
+      color: var(--brown-dark);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      border-radius: 3px;
+    }
+
+    /* ===== STYLE GUIDE ===== */
+    .style-guide-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .style-card { text-align: center; }
+
+    .style-card-caption {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--brown-dark);
+      letter-spacing: 0.03em;
+      line-height: 1.5;
+      margin-bottom: 12px;
+      padding: 0 8px;
+    }
+
+    .style-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      border: 1px solid var(--gold-light);
+      box-shadow: 0 2px 12px rgba(58,47,34,0.08);
+    }
+
+    .style-card-divider {
+      display: block;
+      width: 30px;
+      height: 1px;
+      background: var(--gold-light);
+      border: none;
+      margin: -4px auto;
+    }
+
+    /* ===== BACK TO TOP ===== */
+    .back-to-top-wrap { text-align: center; padding-top: 16px; }
+
+    .back-to-top {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--brown-light);
+      text-decoration: none;
+      padding: 8px 20px;
+      border: 1px solid rgba(197,165,90,0.3);
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+
+    .back-to-top:hover { color: var(--gold-dark); border-color: var(--gold); }
+
+    /* ===== CLOSING PHOTO ===== */
+    .closing-photo {
+      margin: 32px 0 0;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 36px rgba(58,47,34,0.14);
+      border: 1.5px solid var(--gold-light);
+    }
+
+    .closing-photo img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+      object-position: center 20%;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer { text-align: center; padding: 36px 16px 56px; }
+
+    .footer-text {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--brown-light);
+      letter-spacing: 0.06em;
+      font-style: italic;
+    }
+
+    .footer-hashtag {
+      font-family: 'Montserrat', sans-serif;
+      margin-top: 14px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .header  { animation: fadeUp 0.7s ease-out both; }
+    .section { animation: fadeUp 0.7s 0.1s ease-out both; }
+    .footer  { animation: fadeUp 0.7s 0.2s ease-out both; }
+
+    @media (min-width: 480px) {
+      .page-wrapper { max-width: 500px; }
+      .page-title   { font-size: 1.8rem; }
+      .section-inner { padding: 40px 32px 32px; }
+    }
+
+    @media (min-width: 768px) {
+      .page-wrapper  { max-width: 580px; }
+      .section-inner { padding: 48px 40px 36px; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .section-card { box-shadow: none; border: 1px solid #ccc; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-monogram">
+        <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/monogram.png" alt="S & A">
+      </a>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="details.html" class="active">Details</a>
+      <a href="party.html">Wedding Party</a>
+      <a href="program.html">Program</a>
+      <a href="menu.html">Menu</a>
+      <a href="accommodation.html">Stay</a>
+    </div>
+  </nav>
+
+  <div class="page-wrapper" id="top">
+
+    <header class="header">
+      <h1 class="page-title">Wedding Details</h1>
+      <p class="page-subtitle">#SSertified2026</p>
+      <hr class="divider">
+    </header>
+
+    <!-- ===== WEDDING INFORMATION ===== -->
+    <section class="section" id="wedding-details">
+      <div class="section-card">
+
+        <div class="card-floral card-floral-tl" aria-hidden="true">
+          <svg viewBox="0 0 80 130" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <path d="M40 125 C38 100 20 90 18 70 C16 50 30 45 28 30 C26 18 35 10 40 5"
+                  stroke="currentColor" stroke-width="0.9"/>
+            <path d="M18 70 C10 65 8 55 16 52 C20 58 18 68 18 70Z" fill="currentColor" opacity="0.3"/>
+            <path d="M28 30 C36 26 38 18 32 16 C28 22 28 28 28 30Z" fill="currentColor" opacity="0.25"/>
+            <circle cx="18" cy="70" r="5" fill="currentColor" opacity="0.12"/>
+            <circle cx="18" cy="70" r="8" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+            <circle cx="40" cy="5" r="4" fill="currentColor" opacity="0.15"/>
+            <circle cx="40" cy="5" r="6.5" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+            <circle cx="28" cy="30" r="3.5" fill="currentColor" opacity="0.1"/>
+            <ellipse cx="40" cy="0" rx="2" ry="3.5" fill="currentColor" opacity="0.1"/>
+            <ellipse cx="45" cy="4" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(72 40 5)"/>
+            <ellipse cx="43" cy="10" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(144 40 5)"/>
+            <ellipse cx="37" cy="10" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(216 40 5)"/>
+            <ellipse cx="35" cy="4" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(288 40 5)"/>
+          </svg>
+        </div>
+
+        <div class="card-floral card-floral-br" aria-hidden="true">
+          <svg viewBox="0 0 80 130" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <path d="M40 125 C38 100 20 90 18 70 C16 50 30 45 28 30 C26 18 35 10 40 5"
+                  stroke="currentColor" stroke-width="0.9"/>
+            <path d="M18 70 C10 65 8 55 16 52 C20 58 18 68 18 70Z" fill="currentColor" opacity="0.3"/>
+            <path d="M28 30 C36 26 38 18 32 16 C28 22 28 28 28 30Z" fill="currentColor" opacity="0.25"/>
+            <circle cx="18" cy="70" r="5" fill="currentColor" opacity="0.12"/>
+            <circle cx="18" cy="70" r="8" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+            <circle cx="40" cy="5" r="4" fill="currentColor" opacity="0.15"/>
+            <circle cx="40" cy="5" r="6.5" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+            <circle cx="28" cy="30" r="3.5" fill="currentColor" opacity="0.1"/>
+            <ellipse cx="40" cy="0" rx="2" ry="3.5" fill="currentColor" opacity="0.1"/>
+            <ellipse cx="45" cy="4" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(72 40 5)"/>
+            <ellipse cx="43" cy="10" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(144 40 5)"/>
+            <ellipse cx="37" cy="10" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(216 40 5)"/>
+            <ellipse cx="35" cy="4" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(288 40 5)"/>
+          </svg>
+        </div>
+
+        <div class="section-inner">
+          <h2 class="section-title">Wedding Information</h2>
+          <p class="section-subtitle">Details &amp; Gifts</p>
+          <hr class="section-rule">
+
+          <div class="info-block">
+            <h3 class="info-heading">Note on Gifts</h3>
+            <p class="info-text">
+              We will be truly blessed by your<br>
+              presence &amp; your prayers.<br>
+              If you wish to give us a gift,<br>
+              monetary gifts is what we suggest.
+            </p>
+          </div>
+
+          <div class="info-block">
+            <h3 class="info-heading">Mobile Money (MoMo)</h3>
+            <div class="momo-number">0544070812</div>
+            <p class="momo-name">JESSTIMONY ENT / Samuel Simon Awere Damoah</p>
+            <div class="momo-number">0552565248</div>
+            <p class="momo-name">Abena Serwah Addai-Kyenkyehene</p>
+          </div>
+
+          <div class="info-block">
+            <h3 class="info-heading">Important Reminder</h3>
+            <div class="highlight-box">
+              <p>Please remember to pick your <strong>physical access card</strong> for entry to the reception.</p>
+            </div>
+          </div>
+
+          <div class="info-block">
+            <h3 class="info-heading">RSVP</h3>
+            <div class="rsvp-contacts">
+              <div class="rsvp-person">
+                <span class="name">Junior:</span>
+                <a href="tel:0553189883">0553 189 883</a>
+              </div>
+              <div class="rsvp-person">
+                <span class="name">Eunice:</span>
+                <a href="tel:0242545817">0242 545 817</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-block">
+            <h3 class="info-heading">Please Note</h3>
+            <p class="badge">Strictly By Invitation</p>
+            <p class="info-text" style="margin-top: 12px; font-size: 0.9rem;">
+              Kindly note this is an <strong>adult-only event</strong>.
+            </p>
+          </div>
+
+          <div class="info-block">
+            <h3 class="info-heading">Wedding Hashtag</h3>
+            <span class="tag">#SSertified2026</span>
+          </div>
+
+          <div class="back-to-top-wrap">
+            <a href="#top" class="back-to-top">↑ Back to Top</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== STYLE GUIDE ===== -->
+    <section class="section" id="style-guide">
+      <div class="section-card">
+
+        <div class="card-floral card-floral-tl" aria-hidden="true">
+          <svg viewBox="0 0 80 130" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <path d="M40 125 C38 100 20 90 18 70 C16 50 30 45 28 30 C26 18 35 10 40 5"
+                  stroke="currentColor" stroke-width="0.9"/>
+            <path d="M18 70 C10 65 8 55 16 52 C20 58 18 68 18 70Z" fill="currentColor" opacity="0.3"/>
+            <path d="M28 30 C36 26 38 18 32 16 C28 22 28 28 28 30Z" fill="currentColor" opacity="0.25"/>
+            <circle cx="18" cy="70" r="5" fill="currentColor" opacity="0.12"/>
+            <circle cx="18" cy="70" r="8" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+            <circle cx="40" cy="5" r="4" fill="currentColor" opacity="0.15"/>
+            <circle cx="40" cy="5" r="6.5" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+            <circle cx="28" cy="30" r="3.5" fill="currentColor" opacity="0.1"/>
+            <ellipse cx="40" cy="0" rx="2" ry="3.5" fill="currentColor" opacity="0.1"/>
+            <ellipse cx="45" cy="4" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(72 40 5)"/>
+            <ellipse cx="43" cy="10" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(144 40 5)"/>
+            <ellipse cx="37" cy="10" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(216 40 5)"/>
+            <ellipse cx="35" cy="4" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(288 40 5)"/>
+          </svg>
+        </div>
+
+        <div class="card-floral card-floral-br" aria-hidden="true">
+          <svg viewBox="0 0 80 130" xmlns="http://www.w3.org/2000/svg" fill="none">
+            <path d="M40 125 C38 100 20 90 18 70 C16 50 30 45 28 30 C26 18 35 10 40 5"
+                  stroke="currentColor" stroke-width="0.9"/>
+            <path d="M18 70 C10 65 8 55 16 52 C20 58 18 68 18 70Z" fill="currentColor" opacity="0.3"/>
+            <path d="M28 30 C36 26 38 18 32 16 C28 22 28 28 28 30Z" fill="currentColor" opacity="0.25"/>
+            <circle cx="18" cy="70" r="5" fill="currentColor" opacity="0.12"/>
+            <circle cx="18" cy="70" r="8" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+            <circle cx="40" cy="5" r="4" fill="currentColor" opacity="0.15"/>
+            <circle cx="40" cy="5" r="6.5" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+            <circle cx="28" cy="30" r="3.5" fill="currentColor" opacity="0.1"/>
+            <ellipse cx="40" cy="0" rx="2" ry="3.5" fill="currentColor" opacity="0.1"/>
+            <ellipse cx="45" cy="4" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(72 40 5)"/>
+            <ellipse cx="43" cy="10" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(144 40 5)"/>
+            <ellipse cx="37" cy="10" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(216 40 5)"/>
+            <ellipse cx="35" cy="4" rx="2" ry="3.5" fill="currentColor" opacity="0.08" transform="rotate(288 40 5)"/>
+          </svg>
+        </div>
+
+        <div class="section-inner">
+          <h2 class="section-title">Style Guide</h2>
+          <p class="section-subtitle">What to Wear</p>
+          <hr class="section-rule">
+
+          <div class="style-guide-cards">
+
+            <div class="style-card">
+              <p class="style-card-caption">"For Our Beautiful Mama's &amp; Rich Aunties"</p>
+              <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/aunties.png" alt="Style inspiration for mothers and aunties" loading="lazy">
+            </div>
+
+            <hr class="style-card-divider" aria-hidden="true">
+
+            <div class="style-card">
+              <p class="style-card-caption">Fascinators Style Inspiration &amp; Guide</p>
+              <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/hats.png" alt="Fascinator style inspiration" loading="lazy">
+            </div>
+
+            <hr class="style-card-divider" aria-hidden="true">
+
+            <div class="style-card">
+              <p class="style-card-caption">"Ladies It's Giving Wedding Slay!<br>Don't Disappoint"</p>
+              <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/ladies.png" alt="Ladies style inspiration" loading="lazy">
+            </div>
+
+            <hr class="style-card-divider" aria-hidden="true">
+
+            <div class="style-card">
+              <p class="style-card-caption">"Gents Clean Fits &amp; Sharp Vibes Only!<br>Come Looking Like Money"</p>
+              <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/men.png" alt="Gentlemen style inspiration" loading="lazy">
+            </div>
+
+          </div>
+
+          <div class="back-to-top-wrap">
+            <a href="#top" class="back-to-top">↑ Back to Top</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CLOSING COUPLE PHOTO ===== -->
+    <div class="closing-photo">
+      <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/chinchisimon3.jpeg"
+           alt="Samuel & Abena" loading="lazy">
+    </div>
+
+    <footer class="footer">
+      <p class="footer-text">Thank you for celebrating with us.</p>
+      <p class="footer-hashtag">#SSertified2026</p>
+      <div class="footer-ornament" aria-hidden="true" style="margin-top:16px;opacity:0.35;">
+        <svg viewBox="0 0 60 20" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#C5A55A" stroke-width="0.6" style="width:60px;height:auto;">
+          <path d="M5 10 Q15 4 25 10 Q35 16 45 10 Q50 7 55 10"/>
+          <circle cx="30" cy="10" r="2.5" fill="#C5A55A" fill-opacity="0.2"/>
+        </svg>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const links  = document.querySelector('.nav-links');
+    if (toggle && links) {
+      toggle.addEventListener('click', () => {
+        const open = links.classList.toggle('open');
+        toggle.classList.toggle('active', open);
+        toggle.setAttribute('aria-expanded', open);
+      });
+    }
+  </script>
+</body>
+</html>
