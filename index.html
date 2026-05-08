@@ -70,10 +70,13 @@
     /* ===== LAYOUT ===== */
     .page-wrapper {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       max-width: 460px;
-      margin: 0 auto;
-      padding: 0 18px;
+      margin: -28px auto 0;
+      padding: 28px 18px 0;
+      background: var(--cream);
+      border-radius: 20px 20px 0 0;
+      box-shadow: 0 -6px 28px rgba(58,47,34,0.13);
     }
 
     /* ===== HERO ===== */
@@ -93,9 +96,10 @@
       inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(0, 0, 0, 0.28) 0%,
-        rgba(10, 6, 2, 0.52) 50%,
-        rgba(245, 240, 232, 1.00) 92%
+        rgba(0, 0, 0, 0.30) 0%,
+        rgba(10, 6, 2, 0.58) 42%,
+        rgba(10, 6, 2, 0.18) 80%,
+        rgba(0, 0, 0, 0.04) 100%
       );
       z-index: 0;
     }
@@ -107,7 +111,7 @@
       z-index: 1;
       text-align: center;
       padding: 72px 24px 52px;
-      min-height: 85svh;
+      min-height: 100svh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -269,6 +273,56 @@
       font-size: 0.6rem;
       flex-shrink: 0;
       margin-left: 8px;
+    }
+
+    /* ===== VENUE LOCATIONS ===== */
+    .hero-location-links { display: none; } /* desktop only */
+    .mobile-location-links { display: block; }
+
+    .location-links {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(197,165,90,0.22);
+    }
+
+    .location-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 4px;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(197,165,90,0.12);
+      transition: opacity 0.25s;
+    }
+
+    .location-item:last-child { border-bottom: none; }
+    .location-item:hover, .location-item:active { opacity: 0.65; }
+
+    .location-pin {
+      color: var(--gold);
+      flex-shrink: 0;
+      line-height: 0;
+    }
+
+    .location-pin svg { width: 14px; height: 14px; }
+
+    .location-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.64rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--brown-mid);
+      flex: 1;
+    }
+
+    .location-venue {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.60rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--gold-dark);
+      text-align: right;
     }
 
     /* ===== SECTION SHARED ===== */
@@ -605,8 +659,18 @@
     }
 
     @media (min-width: 768px) {
-      .page-wrapper { max-width: 580px; }
+      .page-wrapper {
+        max-width: 580px;
+        margin: 0 auto;
+        padding: 0 18px;
+        background: transparent;
+        border-radius: 0;
+        box-shadow: none;
+      }
       .section-inner { padding: 48px 40px 36px; }
+
+      .hero-location-links { display: block; }
+      .mobile-location-links { display: none; }
 
       /* ===== DESKTOP SPLIT HERO ===== */
       .hero {
@@ -700,6 +764,20 @@
           <li><a href="invitation.pdf" target="_blank" rel="noopener"><span>View Invitation</span><span class="toc-arrow">↗</span></a></li>
         </ul>
       </nav>
+
+      <!-- Venue locations (desktop) -->
+      <div class="location-links hero-location-links">
+        <a class="location-item" href="https://maps.app.goo.gl/YQqHC6uQRMgGWw1k6?g_st=iw" target="_blank" rel="noopener noreferrer">
+          <span class="location-pin"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></span>
+          <span class="location-label">Traditional Ceremony</span>
+          <span class="location-venue">Directions →</span>
+        </a>
+        <a class="location-item" href="https://maps.app.goo.gl/68M1NxLz3N85cV3HA?g_st=iw" target="_blank" rel="noopener noreferrer">
+          <span class="location-pin"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></span>
+          <span class="location-label">White Wedding</span>
+          <span class="location-venue">Rattray Park →</span>
+        </a>
+      </div>
     </div>
 
     <!-- Right photo panel (desktop only) -->
@@ -756,6 +834,20 @@
         <li><a href="invitation.pdf" target="_blank" rel="noopener"><span>View Invitation</span><span class="toc-arrow">↗</span></a></li>
       </ul>
     </nav>
+
+    <!-- Venue locations (mobile) -->
+    <div class="location-links mobile-location-links">
+      <a class="location-item" href="https://maps.app.goo.gl/YQqHC6uQRMgGWw1k6?g_st=iw" target="_blank" rel="noopener noreferrer">
+        <span class="location-pin"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></span>
+        <span class="location-label">Traditional Ceremony</span>
+        <span class="location-venue">Directions →</span>
+      </a>
+      <a class="location-item" href="https://maps.app.goo.gl/68M1NxLz3N85cV3HA?g_st=iw" target="_blank" rel="noopener noreferrer">
+        <span class="location-pin"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></span>
+        <span class="location-label">White Wedding</span>
+        <span class="location-venue">Rattray Park →</span>
+      </a>
+    </div>
 
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
