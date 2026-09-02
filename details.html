@@ -299,7 +299,9 @@
     .info-text strong { font-weight: 500; }
 
     .momo-number {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       font-family: 'Montserrat', sans-serif;
       font-size: 1.15rem;
       font-weight: 600;
@@ -310,6 +312,71 @@
       border: 1px solid var(--gold-light);
       border-radius: 4px;
       background: rgba(255,255,255,0.25);
+    }
+
+    button.momo-number {
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+      position: relative;
+    }
+
+    button.momo-number:hover,
+    button.momo-number:focus-visible {
+      background: rgba(197,165,90,0.14);
+      border-color: var(--gold-dark);
+    }
+
+    button.momo-number:active {
+      transform: scale(0.97);
+    }
+
+    .copy-icon {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+      display: inline-block;
+      background-color: currentColor;
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='9' y='9' width='13' height='13' rx='2'/%3E%3Cpath d='M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1'/%3E%3C/svg%3E") center / contain no-repeat;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='9' y='9' width='13' height='13' rx='2'/%3E%3Cpath d='M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1'/%3E%3C/svg%3E") center / contain no-repeat;
+      opacity: 0.6;
+    }
+
+    button.momo-number.copied .copy-icon {
+      background-color: #4a8c5f;
+      opacity: 1;
+      -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center / contain no-repeat;
+      mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center / contain no-repeat;
+    }
+
+    button.momo-number.copied {
+      border-color: #4a8c5f;
+      background: rgba(74,140,95,0.12);
+    }
+
+    .copy-toast {
+      position: absolute;
+      bottom: calc(100% + 6px);
+      left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      background: var(--brown-dark);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 10px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    button.momo-number.copied .copy-toast {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
     }
 
     .momo-name {
@@ -622,9 +689,17 @@
 
           <div class="info-block">
             <h3 class="info-heading">Mobile Money (MoMo)</h3>
-            <div class="momo-number">0544070812</div>
+            <button type="button" class="momo-number copy-btn" data-copy="0201738456" aria-label="Copy MoMo number 0201738456">
+              <span class="copy-value">0201738456</span>
+              <span class="copy-icon" aria-hidden="true"></span>
+              <span class="copy-toast">Copied!</span>
+            </button>
             <p class="momo-name">JESSTIMONY ENT / Samuel Simon Awere Damoah</p>
-            <div class="momo-number">0552565248</div>
+            <button type="button" class="momo-number copy-btn" data-copy="0279043621" aria-label="Copy MoMo number 0279043621">
+              <span class="copy-value">0279043621</span>
+              <span class="copy-icon" aria-hidden="true"></span>
+              <span class="copy-toast">Copied!</span>
+            </button>
             <p class="momo-name">Abena Serwah Addai-Kyenkyehene</p>
           </div>
 
@@ -782,6 +857,34 @@
         toggle.setAttribute('aria-expanded', open);
       });
     }
+
+    document.querySelectorAll('.copy-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const value = btn.getAttribute('data-copy');
+        const done = () => {
+          btn.classList.add('copied');
+          clearTimeout(btn._copyTimeout);
+          btn._copyTimeout = setTimeout(() => btn.classList.remove('copied'), 1800);
+        };
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(value).then(done).catch(done);
+        } else {
+          const temp = document.createElement('textarea');
+          temp.value = value;
+          temp.style.position = 'fixed';
+          temp.style.opacity = '0';
+          document.body.appendChild(temp);
+          temp.select();
+          try { document.execCommand('copy'); } catch (e) {}
+          document.body.removeChild(temp);
+          done();
+        }
+      });
+    });
   </script>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
