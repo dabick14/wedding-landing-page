@@ -771,8 +771,6 @@
 
       .hero-photo-panel {
         display: block;
-        position: relative;
-        overflow: hidden;
         background-image: url('weddingparty/chinchisimon1.jpeg');
         background-size: cover;
         background-position: center 22%;
@@ -792,6 +790,8 @@
 
       .hero-photo-panel-right {
         display: block;
+        position: relative;
+        overflow: hidden;
         background-image: url('weddingparty/chinchisimon2.jpeg');
         background-size: cover;
         background-position: center 20%;
@@ -873,10 +873,7 @@
   <!-- ===== HERO ===== -->
   <div class="hero" id="top">
     <!-- Left column: photo (desktop only) -->
-    <div class="hero-photo-panel" aria-hidden="true">
-      <div class="hero-photo-layer" data-layer="a"></div>
-      <div class="hero-photo-layer" data-layer="b"></div>
-    </div>
+    <div class="hero-photo-panel" aria-hidden="true"></div>
 
     <!-- Right column (desktop) / overlay (mobile): identity & navigation -->
     <div class="hero-info-panel">
@@ -918,8 +915,11 @@
       </div>
     </div>
 
-    <!-- Right photo panel (desktop only) -->
-    <div class="hero-photo-panel-right" aria-hidden="true"></div>
+    <!-- Right photo panel (desktop only) — previews the hovered section -->
+    <div class="hero-photo-panel-right" aria-hidden="true">
+      <div class="hero-photo-layer" data-layer="a"></div>
+      <div class="hero-photo-layer" data-layer="b"></div>
+    </div>
 
     <!-- Down arrow scroll hint (mobile only) -->
     <div class="scroll-hint" aria-hidden="true">
@@ -1010,7 +1010,7 @@
       var nav = document.querySelector('.hero-toc');
       if (!nav || !window.matchMedia('(hover: hover) and (min-width: 768px)').matches) return;
 
-      var panel  = document.querySelector('.hero-photo-panel');
+      var panel  = document.querySelector('.hero-photo-panel-right');
       var layers = panel ? panel.querySelectorAll('.hero-photo-layer') : [];
       var marker = nav.querySelector('.toc-marker');
       var links  = nav.querySelectorAll('a[data-panel]');
