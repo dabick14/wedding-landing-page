@@ -137,6 +137,7 @@
       z-index: 0;
     }
 
+    .hero-photo-panel,
     .hero-photo-panel-right { display: none; } /* desktop only */
 
     .hero-info-panel {
@@ -770,10 +771,24 @@
 
       .hero-photo-panel {
         display: block;
+        position: relative;
+        overflow: hidden;
         background-image: url('weddingparty/chinchisimon1.jpeg');
         background-size: cover;
         background-position: center 22%;
       }
+
+      /* Two stacked layers so a swap cross-fades rather than flashing. */
+      .hero-photo-layer {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center center;
+        opacity: 0;
+        transition: opacity 0.42s ease;
+      }
+
+      .hero-photo-layer.is-visible { opacity: 1; }
 
       .hero-photo-panel-right {
         display: block;
@@ -797,7 +812,32 @@
       .hero-info-panel .hashtag-header      { color: var(--gold); }
       .hero-info-panel .monogram img        { filter: none; }
 
-      .hero-toc   { display: block; margin-top: 36px; }
+      .hero-toc   { display: block; margin-top: 36px; position: relative; }
+
+      /* Gold marker that slides to whichever row the cursor is on. */
+      .toc-marker {
+        position: absolute;
+        left: -14px;
+        width: 2px;
+        background: var(--gold);
+        border-radius: 1px;
+        opacity: 0;
+        transition: transform 0.34s cubic-bezier(.4,0,.2,1),
+                    height 0.34s cubic-bezier(.4,0,.2,1),
+                    opacity 0.24s ease;
+        pointer-events: none;
+      }
+
+      .hero-toc.is-active .toc-marker { opacity: 1; }
+
+      /* Rows the cursor is not on recede, so the active one reads clearly. */
+      .hero-toc .toc-list a { transition: opacity 0.3s ease, color 0.3s ease, transform 0.3s ease; }
+      .hero-toc.is-active .toc-list a { opacity: 0.42; }
+      .hero-toc.is-active .toc-list a.is-active {
+        opacity: 1;
+        color: var(--gold-dark);
+        transform: translateX(4px);
+      }
       .mobile-toc { display: none; }
       .scroll-hint { display: none; }
     }
@@ -813,6 +853,13 @@
     .section         { animation: fadeUp 0.7s 0.2s ease-out both; }
     .footer          { animation: fadeUp 0.7s 0.25s ease-out both; }
 
+    @media (prefers-reduced-motion: reduce) {
+      .hero-photo-layer,
+      .toc-marker,
+      .hero-toc .toc-list a { transition: none; }
+      .scroll-hint svg { animation: none; }
+    }
+
     /* ===== PRINT ===== */
     @media print {
       .back-to-top-wrap { display: none; }
@@ -826,7 +873,10 @@
   <!-- ===== HERO ===== -->
   <div class="hero" id="top">
     <!-- Left column: photo (desktop only) -->
-    <div class="hero-photo-panel" aria-hidden="true"></div>
+    <div class="hero-photo-panel" aria-hidden="true">
+      <div class="hero-photo-layer" data-layer="a"></div>
+      <div class="hero-photo-layer" data-layer="b"></div>
+    </div>
 
     <!-- Right column (desktop) / overlay (mobile): identity & navigation -->
     <div class="hero-info-panel">
@@ -840,15 +890,16 @@
 
       <!-- TOC — shown in right panel on desktop only -->
       <nav class="toc hero-toc" aria-label="Page contents">
-        <ul class="toc-list">
-          <li><a href="details.html"><span>Wedding Details</span><span class="toc-arrow">→</span></a></li>
-          <li><a href="details.html#style-guide"><span>Style Guide</span><span class="toc-arrow">→</span></a></li>
-          <li><a href="program.html"><span>Wedding Program</span><span class="toc-arrow">→</span></a></li>
-          <li><a href="party.html"><span>Meet the Bridal Party</span><span class="toc-arrow">→</span></a></li>
-          <li><a href="menu.html"><span>Reception Menu</span><span class="toc-arrow">→</span></a></li>
-          <li><a href="accommodation.html"><span>Accommodation</span><span class="toc-arrow">→</span></a></li>
-          <li><a href="photos.html"><span>Photos</span><span class="toc-arrow">→</span></a></li>
-          <li><a href="invitation.pdf" target="_blank" rel="noopener"><span>View Invitation</span><span class="toc-arrow">↗</span></a></li>
+        <span class="toc-marker" aria-hidden="true"></span>
+          <ul class="toc-list">
+          <li><a href="details.html" data-panel="panels/details.jpg"><span>Wedding Details</span><span class="toc-arrow">→</span></a></li>
+          <li><a href="details.html#style-guide" data-panel="panels/style.jpg"><span>Style Guide</span><span class="toc-arrow">→</span></a></li>
+          <li><a href="program.html" data-panel="panels/program.jpg"><span>Wedding Program</span><span class="toc-arrow">→</span></a></li>
+          <li><a href="party.html" data-panel="panels/party.jpg"><span>Meet the Bridal Party</span><span class="toc-arrow">→</span></a></li>
+          <li><a href="menu.html" data-panel="panels/menu.jpg"><span>Reception Menu</span><span class="toc-arrow">→</span></a></li>
+          <li><a href="accommodation.html" data-panel="panels/stay.jpg"><span>Accommodation</span><span class="toc-arrow">→</span></a></li>
+          <li><a href="photos.html" data-panel="panels/photos.jpg"><span>Photos</span><span class="toc-arrow">→</span></a></li>
+          <li><a href="invitation.pdf" data-panel="panels/invitation.jpg" target="_blank" rel="noopener"><span>View Invitation</span><span class="toc-arrow">↗</span></a></li>
         </ul>
       </nav>
 
@@ -950,6 +1001,70 @@
     </footer>
 
   </div>
+
+  <script>
+    /* Desktop hover: the left hero panel previews whichever section the
+       cursor is over, and a gold marker slides to that row. Pointer-only,
+       so touch devices and reduced-motion users are untouched. */
+    (function () {
+      var nav = document.querySelector('.hero-toc');
+      if (!nav || !window.matchMedia('(hover: hover) and (min-width: 768px)').matches) return;
+
+      var panel  = document.querySelector('.hero-photo-panel');
+      var layers = panel ? panel.querySelectorAll('.hero-photo-layer') : [];
+      var marker = nav.querySelector('.toc-marker');
+      var links  = nav.querySelectorAll('a[data-panel]');
+      if (!panel || layers.length !== 2 || !marker || !links.length) return;
+
+      var front = 0, current = null, warmed = false, leaveTimer;
+
+      function warm() {                    // fetch panels once, on first intent
+        if (warmed) return;
+        warmed = true;
+        links.forEach(function (a) { new Image().src = a.dataset.panel; });
+      }
+
+      function show(src) {
+        if (src === current) return;
+        current = src;
+        var next = layers[front ^ 1];
+        if (src) {
+          next.style.backgroundImage = 'url("' + src + '")';
+          next.classList.add('is-visible');
+          layers[front].classList.remove('is-visible');
+          front ^= 1;
+        } else {
+          layers.forEach(function (l) { l.classList.remove('is-visible'); });
+        }
+      }
+
+      function activate(a) {
+        clearTimeout(leaveTimer);
+        warm();
+        nav.classList.add('is-active');
+        links.forEach(function (o) { o.classList.toggle('is-active', o === a); });
+        marker.style.height = a.offsetHeight - 12 + 'px';
+        marker.style.transform = 'translateY(' + (a.offsetTop + 6) + 'px)';
+        show(a.dataset.panel);
+      }
+
+      links.forEach(function (a) {
+        a.addEventListener('mouseenter', function () { activate(a); });
+        a.addEventListener('focus', function () { activate(a); });
+      });
+
+      function reset() {
+        nav.classList.remove('is-active');
+        links.forEach(function (o) { o.classList.remove('is-active'); });
+        show(null);
+      }
+      nav.addEventListener('mouseleave', function () { leaveTimer = setTimeout(reset, 90); });
+      nav.addEventListener('focusout', function (e) {
+        if (!nav.contains(e.relatedTarget)) reset();
+      });
+      nav.addEventListener('mouseenter', warm);
+    })();
+  </script>
 
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
