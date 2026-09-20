@@ -138,7 +138,8 @@
     }
 
     .hero-photo-panel,
-    .hero-photo-panel-right { display: none; } /* desktop only */
+    .hero-photo-panel-right,
+    .hero-credit { display: none; } /* desktop only */
 
     .hero-info-panel {
       position: relative;
@@ -154,7 +155,7 @@
 
     /* On mobile the names fall over a light part of the photo; this keeps
        them legible without darkening the whole image. */
-    @media (max-width: 767px) {
+    @media (max-width: 999px) {
       .hero-info-panel::before {
         content: '';
         position: absolute;
@@ -215,7 +216,7 @@
       font-family: 'Cormorant Garamond', Georgia, serif;
       /* Fluid so the names stay on one line from 320px up — at a fixed
          1.75rem they wrapped to "SAMUEL &" / "ABENA" on a 390px phone. */
-      font-size: clamp(1.2rem, 5.6vw, 2rem);
+      font-size: clamp(1.2rem, 5.6vw, 2.6rem);
       font-weight: 300;
       letter-spacing: 0.24em;
       /* letter-spacing adds a trailing gap after the last letter, which
@@ -684,6 +685,34 @@
     }
 
     /* ===== FOOTER ===== */
+    /* House credit — matches the .footer-made mark on the other sites. */
+    .footer-made {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 0.82rem;
+      font-weight: 300;
+      font-style: italic;
+      letter-spacing: 0.07em;
+      color: var(--brown-light);
+      opacity: 0.62;
+      margin-top: 22px;
+    }
+
+    .footer-made a {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-thickness: 0.5px;
+      text-underline-offset: 3px;
+      transition: opacity 0.3s ease;
+    }
+
+    .footer-made a:hover { opacity: 0.7; }
+
+    .footer-made .heart {
+      font-style: normal;
+      color: var(--gold);
+      padding: 0 1px;
+    }
+
     .footer {
       text-align: center;
       padding: 36px 16px 56px;
@@ -721,7 +750,7 @@
     /* ===== RESPONSIVE ===== */
 
     /* Mobile: white/gold text inside dark frosted card */
-    @media (max-width: 767px) {
+    @media (max-width: 999px) {
       .qr-note { color: rgba(255,255,255,0.45); }
 
       .mobile-toc .toc-list a { color: rgba(255,255,255,0.88); }
@@ -742,7 +771,7 @@
 
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 1000px) {
       .page-wrapper {
         max-width: 580px;
         margin: 0 auto;
@@ -801,7 +830,7 @@
       .hero-info-panel {
         background: var(--cream);
         min-height: unset;
-        padding: 52px 40px;
+        padding: clamp(26px, 5vh, 52px) 40px;
         border-left: 1px solid rgba(197,165,90,0.22);
         border-right: 1px solid rgba(197,165,90,0.22);
       }
@@ -812,20 +841,78 @@
       .hero-info-panel .hashtag-header      { color: var(--gold); }
       .hero-info-panel .monogram img        { filter: none; }
 
-      .hero-toc   { display: block; margin-top: 36px; position: relative; }
+      .hero-toc   { display: block; margin-top: clamp(14px, 3vh, 34px); position: relative; }
+
+      .monogram {
+        width: clamp(60px, 8.5vh, 100px);
+        height: clamp(60px, 8.5vh, 100px);
+        margin-bottom: clamp(6px, 1.5vh, 14px);
+      }
+
+      .hashtag-header { margin-top: clamp(4px, 0.9vh, 8px); }
+
+      .location-links {
+        margin-top: clamp(8px, 1.7vh, 14px);
+        padding-top: clamp(7px, 1.4vh, 12px);
+      }
+
+      .location-item { padding: clamp(5px, 1.1vh, 11px) 4px; }
+
+      /* Below the hero there is only the mobile nav (already hidden), a
+         divider, the QR note and the thank-you footer. None of it earns a
+         scroll here, so the hero is the page. */
+      .page-wrapper { display: none; }
+
+      .hero-credit {
+        display: block;
+        order: 99;
+        margin-top: clamp(12px, 2.4vh, 30px);
+        font-size: clamp(0.7rem, 1.35vh, 0.8rem);
+        opacity: 0.5;
+      }
+
 
       /* Gold marker that slides to whichever row the cursor is on. */
       .toc-marker {
         position: absolute;
-        left: -14px;
-        width: 2px;
+        left: 0;
+        height: 1px;
         background: var(--gold);
-        border-radius: 1px;
         opacity: 0;
         transition: transform 0.34s cubic-bezier(.4,0,.2,1),
-                    height 0.34s cubic-bezier(.4,0,.2,1),
+                    width 0.34s cubic-bezier(.4,0,.2,1),
                     opacity 0.24s ease;
         pointer-events: none;
+      }
+
+      /* Oversized centred type with the image revealed alongside — the
+         list-image-hover pattern this hero is borrowing from. */
+      .hero-toc .toc-list { max-width: 100%; }
+
+      .hero-toc .toc-list a {
+        justify-content: center;
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: clamp(0.98rem, 1.85vh, 1.35rem);
+        font-weight: 400;
+        letter-spacing: 0.14em;
+        text-indent: 0.14em;
+        line-height: 1.3;
+        padding: clamp(6px, 1.3vh, 15px) 4px;
+      }
+
+      .hero-toc .toc-arrow {
+        position: absolute;
+        right: 0;
+        opacity: 0;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        transform: translateX(-6px);
+      }
+
+      .hero-toc .toc-list li { position: relative; }
+
+      .hero-toc .toc-list a.is-active .toc-arrow {
+        opacity: 1;
+        transform: translateX(0);
       }
 
       .hero-toc.is-active .toc-marker { opacity: 1; }
@@ -836,7 +923,6 @@
       .hero-toc.is-active .toc-list a.is-active {
         opacity: 1;
         color: var(--gold-dark);
-        transform: translateX(4px);
       }
       .mobile-toc { display: none; }
       .scroll-hint { display: none; }
@@ -898,6 +984,8 @@
           <li><a href="photos.html" data-panel="panels/photos.jpg"><span>Photos</span><span class="toc-arrow">→</span></a></li>
         </ul>
       </nav>
+
+      <p class="footer-made hero-credit">Built with <span class="heart" aria-hidden="true">&#9829;</span> by <a href="https://cfweddings.live" target="_blank" rel="noopener noreferrer">CF Weddings</a></p>
 
       <!-- Venue locations (desktop) -->
       <div class="location-links hero-location-links">
@@ -990,6 +1078,7 @@
     <footer class="footer">
       <p class="footer-text">Thank you for celebrating with us.</p>
       <p class="footer-hashtag">#SSertified2026</p>
+      <p class="footer-made">Built with <span class="heart" aria-hidden="true">&#9829;</span> by <a href="https://cfweddings.live" target="_blank" rel="noopener noreferrer">CF Weddings</a></p>
       <div class="footer-ornament" aria-hidden="true">
         <svg viewBox="0 0 60 20" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#C5A55A" stroke-width="0.6">
           <path d="M5 10 Q15 4 25 10 Q35 16 45 10 Q50 7 55 10"/>
@@ -1006,7 +1095,7 @@
        so touch devices and reduced-motion users are untouched. */
     (function () {
       var nav = document.querySelector('.hero-toc');
-      if (!nav || !window.matchMedia('(hover: hover) and (min-width: 768px)').matches) return;
+      if (!nav || !window.matchMedia('(min-width: 1000px)').matches) return;
 
       var panel  = document.querySelector('.hero-photo-panel-right');
       var layers = panel ? panel.querySelectorAll('.hero-photo-layer') : [];
@@ -1053,8 +1142,8 @@
         warm();
         nav.classList.add('is-active');
         links.forEach(function (o) { o.classList.toggle('is-active', o === a); });
-        marker.style.height = a.offsetHeight - 12 + 'px';
-        marker.style.transform = 'translateY(' + (a.offsetTop + 6) + 'px)';
+        marker.style.width = a.offsetWidth + 'px';
+        marker.style.transform = 'translateY(' + (a.offsetTop + a.offsetHeight - 1) + 'px)';
         show(a.dataset.panel);
       }
 
@@ -1078,6 +1167,26 @@
          rather than paying for the download at the moment it is needed. */
       if (window.requestIdleCallback) requestIdleCallback(warm, { timeout: 2500 });
       else setTimeout(warm, 1800);
+
+      /* A tablet in landscape gets this layout but has no cursor, so the
+         panel would sit on one photo forever. Drift through the sections
+         instead, and stop for good the moment they touch anything. */
+      var noHover = window.matchMedia('(hover: none)').matches;
+      var stillOK = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (noHover && stillOK) {
+        var i = 0, timer = setInterval(function () {
+          activate(links[i % links.length]);
+          i++;
+        }, 3400);
+        var stop = function () {
+          clearInterval(timer);
+          reset();
+          window.removeEventListener('touchstart', stop);
+          window.removeEventListener('scroll', stop);
+        };
+        window.addEventListener('touchstart', stop, { passive: true, once: true });
+        window.addEventListener('scroll', stop, { passive: true, once: true });
+      }
     })();
   </script>
 
