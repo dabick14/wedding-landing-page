@@ -5,7 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="format-detection" content="telephone=no">
   <title>Wedding Details — #SSertified2026</title>
-  <meta name="description" content="Wedding information, gifts, RSVP and style guide for Samuel & Abena's celebration.">
+  <meta name="description" content="A note on gifts, RSVP contacts, the access card reminder, and the full style guide for the day.">
+  <link rel="canonical" href="https://simonwedschinchi.com/details.html">
+  <meta name="theme-color" content="#F5F0E8">
+
+  <!-- ===== LINK PREVIEW (WhatsApp, iMessage, Facebook, X) ===== -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Samuel &amp; Abena &mdash; #SSertified2026">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:url" content="https://simonwedschinchi.com/details.html">
+  <meta property="og:title" content="Wedding Details &mdash; Samuel &amp; Abena">
+  <meta property="og:description" content="A note on gifts, RSVP contacts, the access card reminder, and the full style guide for the day.">
+  <meta property="og:image" content="https://simonwedschinchi.com/og.jpg">
+  <meta property="og:image:secure_url" content="https://simonwedschinchi.com/og.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Samuel &amp; Abena &mdash; #SSertified2026">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Wedding Details &mdash; Samuel &amp; Abena">
+  <meta name="twitter:description" content="A note on gifts, RSVP contacts, the access card reminder, and the full style guide for the day.">
+  <meta name="twitter:image" content="https://simonwedschinchi.com/og.jpg">
+
+  <!-- ===== ICONS ===== -->
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="icon-512.png" sizes="512x512" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -58,7 +83,7 @@
       content: '';
       position: fixed;
       inset: 0;
-      background: url('https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/chinchisimon3.jpeg') center/cover no-repeat;
+      background: url('weddingparty/chinchisimon3.jpeg') center/cover no-repeat;
       opacity: 0.05;
       pointer-events: none;
       z-index: 0;
@@ -141,18 +166,22 @@
     .nav-links a:hover,
     .nav-links a.active { color: var(--gold-dark); }
 
-    @media (min-width: 480px) {
+    /* The seven links need ~740px to sit on one row, so the hamburger stays
+       until then. Below this the row clipped its first and last link. */
+    @media (min-width: 760px) {
       .nav-inner { justify-content: center; }
       .nav-toggle { display: none; }
       .nav-links {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         justify-content: center;
         padding: 0;
         background: none;
         backdrop-filter: none;
+        -webkit-backdrop-filter: none;
         border-bottom: none;
-        gap: 4px;
+        gap: 0 4px;
       }
       .nav-links a { padding: 8px 12px; width: auto; }
     }
@@ -177,6 +206,7 @@
       font-size: 1.6rem;
       font-weight: 300;
       letter-spacing: 0.22em;
+      text-indent: 0.22em;
       text-transform: uppercase;
       color: var(--brown-dark);
     }
@@ -186,6 +216,7 @@
       font-size: 0.62rem;
       font-weight: 400;
       letter-spacing: 0.22em;
+      text-indent: 0.22em;
       text-transform: uppercase;
       color: var(--gold);
       margin-top: 6px;
@@ -228,6 +259,7 @@
       font-size: 1.2rem;
       font-weight: 400;
       letter-spacing: 0.22em;
+      text-indent: 0.22em;
       text-transform: uppercase;
       color: var(--gold-dark);
       margin-bottom: 6px;
@@ -238,6 +270,7 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 0.6rem;
       letter-spacing: 0.28em;
+      text-indent: 0.28em;
       text-transform: uppercase;
       color: var(--brown-light);
       font-weight: 400;
@@ -282,6 +315,7 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 0.62rem;
       letter-spacing: 0.24em;
+      text-indent: 0.24em;
       text-transform: uppercase;
       color: var(--gold-dark);
       margin-bottom: 10px;
@@ -457,6 +491,7 @@
       font-size: 0.72rem;
       font-weight: 600;
       letter-spacing: 0.14em;
+      text-indent: 0.14em;
       color: var(--gold-dark);
       padding: 5px 16px;
       border: 1px solid var(--gold-light);
@@ -471,12 +506,43 @@
       font-size: 0.62rem;
       font-weight: 600;
       letter-spacing: 0.16em;
+      text-indent: 0.16em;
       text-transform: uppercase;
       padding: 8px 18px;
       border-radius: 3px;
     }
 
     /* ===== STYLE GUIDE ===== */
+    /* The printed moodboard states the dress code; the site never did. */
+    .dress-code {
+      margin: 0 auto 26px;
+      max-width: 340px;
+      text-align: center;
+    }
+
+    .dress-code p {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--brown-dark);
+      line-height: 1.7;
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(197,165,90,0.18);
+    }
+
+    .dress-code p:last-child { border-bottom: none; }
+
+    .dress-code span {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-indent: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 3px;
+    }
+
     .style-guide-cards {
       display: flex;
       flex-direction: column;
@@ -569,6 +635,7 @@
       font-size: 0.72rem;
       font-weight: 500;
       letter-spacing: 0.18em;
+      text-indent: 0.18em;
       color: var(--gold);
     }
 
@@ -605,7 +672,7 @@
   <nav class="site-nav">
     <div class="nav-inner">
       <a href="index.html" class="nav-monogram">
-        <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/monogram.png" alt="S & A">
+        <img src="monogram.png" alt="S & A">
       </a>
       <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -791,32 +858,37 @@
           <p class="section-subtitle">What to Wear</p>
           <hr class="section-rule">
 
+          <div class="dress-code">
+            <p><span>Ladies</span>All things bright &amp; beautiful &mdash; gowns with fascinators</p>
+            <p><span>Gents</span>Black tie</p>
+          </div>
+
           <div class="style-guide-cards">
 
             <div class="style-card">
               <p class="style-card-caption">"For Our Beautiful Mama's &amp; Rich Aunties"</p>
-              <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/aunties.png" alt="Style inspiration for mothers and aunties" loading="lazy">
+              <img src="aunties.jpg" width="938" height="455" alt="Style inspiration for mothers and aunties" loading="lazy">
             </div>
 
             <hr class="style-card-divider" aria-hidden="true">
 
             <div class="style-card">
               <p class="style-card-caption">Fascinators Style Inspiration &amp; Guide</p>
-              <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/hats.png" alt="Fascinator style inspiration" loading="lazy">
+              <img src="hats.jpg" width="938" height="271" alt="Fascinator style inspiration" loading="lazy">
             </div>
 
             <hr class="style-card-divider" aria-hidden="true">
 
             <div class="style-card">
               <p class="style-card-caption">"Ladies It's Giving Wedding Slay!<br>Don't Disappoint"</p>
-              <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/ladies.png" alt="Ladies style inspiration" loading="lazy">
+              <img src="ladies.jpg" width="938" height="476" alt="Ladies style inspiration" loading="lazy">
             </div>
 
             <hr class="style-card-divider" aria-hidden="true">
 
             <div class="style-card">
               <p class="style-card-caption">"Gents Clean Fits &amp; Sharp Vibes Only!<br>Come Looking Like Money"</p>
-              <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/men.png" alt="Gentlemen style inspiration" loading="lazy">
+              <img src="men.jpg" width="938" height="470" alt="Gentlemen style inspiration" loading="lazy">
             </div>
 
           </div>
@@ -830,7 +902,7 @@
 
     <!-- ===== CLOSING COUPLE PHOTO ===== -->
     <div class="closing-photo">
-      <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/chinchisimon3.jpeg"
+      <img src="weddingparty/chinchisimon3.jpeg"
            alt="Samuel & Abena" loading="lazy">
     </div>
 

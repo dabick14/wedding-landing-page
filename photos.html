@@ -5,7 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="format-detection" content="telephone=no">
   <title>Photos — #SSertified2026</title>
-  <meta name="description" content="View the official photo galleries from Samuel & Abena's wedding celebration.">
+  <meta name="description" content="The official galleries from the day, with gallery access details so you can browse and download.">
+  <link rel="canonical" href="https://simonwedschinchi.com/photos.html">
+  <meta name="theme-color" content="#F5F0E8">
+
+  <!-- ===== LINK PREVIEW (WhatsApp, iMessage, Facebook, X) ===== -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Samuel &amp; Abena &mdash; #SSertified2026">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:url" content="https://simonwedschinchi.com/photos.html">
+  <meta property="og:title" content="The Photos &mdash; Samuel &amp; Abena">
+  <meta property="og:description" content="The official galleries from the day, with gallery access details so you can browse and download.">
+  <meta property="og:image" content="https://simonwedschinchi.com/og.jpg">
+  <meta property="og:image:secure_url" content="https://simonwedschinchi.com/og.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Samuel &amp; Abena &mdash; #SSertified2026">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Photos &mdash; Samuel &amp; Abena">
+  <meta name="twitter:description" content="The official galleries from the day, with gallery access details so you can browse and download.">
+  <meta name="twitter:image" content="https://simonwedschinchi.com/og.jpg">
+
+  <!-- ===== ICONS ===== -->
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="icon-512.png" sizes="512x512" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -57,7 +82,7 @@
       content: '';
       position: fixed;
       inset: 0;
-      background: url('https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/chinchisimon3.jpeg') center/cover no-repeat;
+      background: url('weddingparty/chinchisimon3.jpeg') center/cover no-repeat;
       opacity: 0.05;
       pointer-events: none;
       z-index: 0;
@@ -140,18 +165,22 @@
     .nav-links a:hover,
     .nav-links a.active { color: var(--gold-dark); }
 
-    @media (min-width: 480px) {
+    /* The seven links need ~740px to sit on one row, so the hamburger stays
+       until then. Below this the row clipped its first and last link. */
+    @media (min-width: 760px) {
       .nav-inner { justify-content: center; }
       .nav-toggle { display: none; }
       .nav-links {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         justify-content: center;
         padding: 0;
         background: none;
         backdrop-filter: none;
+        -webkit-backdrop-filter: none;
         border-bottom: none;
-        gap: 4px;
+        gap: 0 4px;
       }
       .nav-links a { padding: 8px 12px; width: auto; }
     }
@@ -176,6 +205,7 @@
       font-size: 1.6rem;
       font-weight: 300;
       letter-spacing: 0.22em;
+      text-indent: 0.22em;
       text-transform: uppercase;
       color: var(--brown-dark);
     }
@@ -185,6 +215,7 @@
       font-size: 0.62rem;
       font-weight: 400;
       letter-spacing: 0.22em;
+      text-indent: 0.22em;
       text-transform: uppercase;
       color: var(--gold);
       margin-top: 6px;
@@ -254,6 +285,7 @@
       font-size: 0.6rem;
       font-weight: 600;
       letter-spacing: 0.26em;
+      text-indent: 0.26em;
       text-transform: uppercase;
       color: var(--gold);
       text-align: center;
@@ -319,6 +351,7 @@
       font-size: 0.58rem;
       font-weight: 500;
       letter-spacing: 0.16em;
+      text-indent: 0.16em;
       text-transform: uppercase;
       color: var(--brown-light);
       background: rgba(197,165,90,0.10);
@@ -476,6 +509,7 @@
       font-size: 0.62rem;
       font-weight: 400;
       letter-spacing: 0.22em;
+      text-indent: 0.22em;
       text-transform: uppercase;
       color: var(--gold);
       margin-top: 6px;
@@ -488,7 +522,7 @@
   <nav class="site-nav">
     <div class="nav-inner">
       <a href="index.html" class="nav-monogram">
-        <img src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/monogram.png" alt="S & A">
+        <img src="monogram.png" alt="S & A">
       </a>
       <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -525,7 +559,7 @@
       <!-- Gallery 1 — The Simons (Pixieset) -->
       <div class="gallery-card">
         <img class="gallery-card-thumb"
-             src="https://cdn.jsdelivr.net/gh/dabick14/wedding-landing-page@main/weddingparty/pixbay.jpeg"
+             src="weddingparty/pixbay.jpeg" width="1618" height="1238"
              alt="Gallery preview" loading="lazy">
         <div class="gallery-card-body">
           <div class="gallery-card-meta">
