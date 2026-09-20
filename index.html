@@ -1018,24 +1018,36 @@
 
       var front = 0, current = null, warmed = false, leaveTimer;
 
-      function warm() {                    // fetch panels once, on first intent
+      function warm() {                    // fetch the panels once
         if (warmed) return;
         warmed = true;
         links.forEach(function (a) { new Image().src = a.dataset.panel; });
       }
 
+      function hide() {
+        layers.forEach(function (l) { l.classList.remove('is-visible'); });
+      }
+
+      /* Wait for the bitmap before fading it in. Swapping the moment the
+         cursor arrives showed an empty layer over the default photo while
+         the file was still downloading. */
       function show(src) {
         if (src === current) return;
         current = src;
-        var next = layers[front ^ 1];
-        if (src) {
+        if (!src) { hide(); return; }
+        var img = new Image();
+        img.onload = function () {
+          if (current !== src) return;     // a later row already won
+          var next = layers[front ^ 1];
           next.style.backgroundImage = 'url("' + src + '")';
           next.classList.add('is-visible');
           layers[front].classList.remove('is-visible');
           front ^= 1;
-        } else {
-          layers.forEach(function (l) { l.classList.remove('is-visible'); });
-        }
+        };
+        img.onerror = function () {
+          if (current === src) current = null;
+        };
+        img.src = src;                     // instant once warm() has run
       }
 
       function activate(a) {
@@ -1063,6 +1075,11 @@
         if (!nav.contains(e.relatedTarget)) reset();
       });
       nav.addEventListener('mouseenter', warm);
+
+      /* Prefetch while the page is idle so the very first hover is instant,
+         rather than paying for the download at the moment it is needed. */
+      if (window.requestIdleCallback) requestIdleCallback(warm, { timeout: 2500 });
+      else setTimeout(warm, 1800);
     })();
   </script>
 
