@@ -771,6 +771,42 @@
 
     }
 
+    /* Tablet portrait keeps the mobile treatment, but the frosted card has
+       to run edge to edge like it does on a phone — at 500px wide in an
+       820px viewport it read as a floating panel, not the same effect. */
+    @media (min-width: 600px) and (max-width: 999px) {
+      .page-wrapper {
+        max-width: none;
+        margin-top: -34px;
+        padding: 36px 40px 0;
+        border-radius: 28px 28px 0 0;
+      }
+
+      .floral-divider { width: 260px; }
+
+      .qr-note { font-size: 0.78rem; margin-bottom: 14px; }
+
+      .mobile-toc { padding-bottom: 28px; }
+
+      .mobile-toc .toc-list,
+      .mobile-location-links { max-width: 520px; margin: 0 auto; }
+
+      .mobile-toc .toc-list a {
+        font-size: 0.86rem;
+        letter-spacing: 0.14em;
+        padding: 20px 6px;
+      }
+
+      .location-item { padding: 16px 6px; }
+      .location-label { font-size: 0.76rem; }
+      .location-venue { font-size: 0.72rem; }
+
+      .footer { padding: 46px 16px 64px; }
+      .footer-text { font-size: 1.25rem; }
+      .footer-hashtag { font-size: 0.82rem; }
+      .footer-made { font-size: 0.92rem; }
+    }
+
     @media (min-width: 1000px) {
       .page-wrapper {
         max-width: 580px;
@@ -876,6 +912,7 @@
       .toc-marker {
         position: absolute;
         left: 0;
+        top: 0;
         height: 1px;
         background: var(--gold);
         opacity: 0;
@@ -1142,8 +1179,14 @@
         warm();
         nav.classList.add('is-active');
         links.forEach(function (o) { o.classList.toggle('is-active', o === a); });
-        marker.style.width = a.offsetWidth + 'px';
-        marker.style.transform = 'translateY(' + (a.offsetTop + a.offsetHeight - 1) + 'px)';
+        /* Measured against the nav, not offsetTop: each row is its own
+           offset parent (it has to be, to anchor the arrow), so offsetTop
+           reads ~0 for every row and pinned the marker under the first. */
+        var navBox = nav.getBoundingClientRect();
+        var box = a.getBoundingClientRect();
+        marker.style.width = box.width + 'px';
+        marker.style.left = (box.left - navBox.left) + 'px';
+        marker.style.transform = 'translateY(' + (box.bottom - navBox.top - 1) + 'px)';
         show(a.dataset.panel);
       }
 
